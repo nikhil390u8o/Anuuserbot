@@ -1,7 +1,6 @@
 from telethon import events
 from user.spam import spam_handle
 from user.love import loveyou_handle, love_handle
-from user.fuck import fuck_handle, wtf_handle, fuckyou_handle
 from user.type import type_handle
 from user.markdown import markdown_handle
 from user.afk import afk_handle, afkmsg_handle, stop_afk
