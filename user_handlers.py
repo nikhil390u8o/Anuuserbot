@@ -10,7 +10,6 @@ from user.dino import dino_anim
 from user.nah import nah_handle
 from user.brain import brain_handle
 from user.wtf import wtf_handle
-from user.bomb import bomb_handle
 from bot.ping import ping_handle
 from user.help import help_handle
 
@@ -73,10 +72,7 @@ def register(client):
   async def ping(event):
     await ping_handle(client, event)
     
-  @client.on(events.NewMessage(outgoing=True, pattern=r'^.bomb(?:\s+(.*))?$'))
-  async def bomb(event):
-    await bomb_handle(client, event)
-    
+  
   @client.on(events.NewMessage(outgoing=True, pattern=r'^.brain(?:\s+(.*))?$'))
   async def brain(event):
     await brain_handle(client, event)
