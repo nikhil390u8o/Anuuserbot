@@ -21,107 +21,103 @@ from user.chat_info import get_admins, tag_admins
 from user.clone import clone_user, revert_user
 
 def register(client):
-  @client.on(events.NewMessage(outgoing=True, pattern=r'^//revert(?:\s+(.*))?$'))
+  @client.on(events.NewMessage(outgoing=True, pattern=r'^.revert(?:\s+(.*))?$'))
   async def revertusers_handle(event):
     await revert_user(client, event)
     
-  @client.on(events.NewMessage(outgoing=True, pattern=r'^//clone(?:\s+(.*))?$'))
+  @client.on(events.NewMessage(outgoing=True, pattern=r'^.clone(?:\s+(.*))?$'))
   async def cloneusers_handle(event):
     await clone_user(client, event)
     
-  @client.on(events.NewMessage(outgoing=True, pattern=r'^@admins(?:\s+(.*))?$'))
+  @client.on(events.NewMessage(outgoing=True, pattern=r'^.@admins(?:\s+(.*))?$'))
   async def tagadmins_handle(event):
     await tag_admins(client, event)
     
-  @client.on(events.NewMessage(outgoing=True, pattern=r'^//admins(?:\s+(.*))?$'))
+  @client.on(events.NewMessage(outgoing=True, pattern=r'^.admins(?:\s+(.*))?$'))
   async def admins_handle(event):
     await get_admins(client, event)
     
-  @client.on(events.NewMessage(outgoing=True, pattern=r'^//setpfp(?:\s+(.*))?$'))
+  @client.on(events.NewMessage(outgoing=True, pattern=r'^.setpfp(?:\s+(.*))?$'))
   async def setpfp_handle(event):
     await setpfp(client, event) 
     
-  @client.on(events.NewMessage(outgoing=True, pattern=r'^//setbio(?:\s+(.*))?$'))
+  @client.on(events.NewMessage(outgoing=True, pattern=r'^.setbio(?:\s+(.*))?$'))
   async def setbio_handle(event):
     await setbio(client, event) 
     
-  @client.on(events.NewMessage(outgoing=True, pattern=r'^//setname(?:\s+(.*))?$'))
+  @client.on(events.NewMessage(outgoing=True, pattern=r'^.setname(?:\s+(.*))?$'))
   async def setname_handle(event):
     await setname(client, event) 
     
-  @client.on(events.NewMessage(outgoing=True, pattern=r'^//unmute(?:\s+(.*))?$'))
+  @client.on(events.NewMessage(outgoing=True, pattern=r'^.unmute(?:\s+(.*))?$'))
   async def unmute(event):
     await unmute_handle(client, event)  
     
-  @client.on(events.NewMessage(outgoing=True, pattern=r'^//mute(?:\s+(.*))?$'))
+  @client.on(events.NewMessage(outgoing=True, pattern=r'^.mute(?:\s+(.*))?$'))
   async def mute(event):
     await mute_handle(client, event)  
     
-  @client.on(events.NewMessage(outgoing=True, pattern=r'^//unban(?:\s+(.*))?$'))
+  @client.on(events.NewMessage(outgoing=True, pattern=r'^.unban(?:\s+(.*))?$'))
   async def unban(event):
     await unban_handle(client, event)
     
-  @client.on(events.NewMessage(outgoing=True, pattern=r'^//ban(?:\s+(.*))?$'))
+  @client.on(events.NewMessage(outgoing=True, pattern=r'^.ban(?:\s+(.*))?$'))
   async def ban(event):
     await ban_handle(client, event)
     
-  @client.on(events.NewMessage(outgoing=True, pattern=r'^//help(?:\s+(.*))?$'))
+  @client.on(events.NewMessage(outgoing=True, pattern=r'^.help(?:\s+(.*))?$'))
   async def help(event):
     await help_handle(client, event)
     
-  @client.on(events.NewMessage(outgoing=True, pattern=r'^//ping(?:\s+(.*))?$'))
+  @client.on(events.NewMessage(outgoing=True, pattern=r'^.ping(?:\s+(.*))?$'))
   async def ping(event):
     await ping_handle(client, event)
     
-  @client.on(events.NewMessage(outgoing=True, pattern=r'^//bomb(?:\s+(.*))?$'))
+  @client.on(events.NewMessage(outgoing=True, pattern=r'^.bomb(?:\s+(.*))?$'))
   async def bomb(event):
     await bomb_handle(client, event)
     
-  @client.on(events.NewMessage(outgoing=True, pattern=r'^//brain(?:\s+(.*))?$'))
+  @client.on(events.NewMessage(outgoing=True, pattern=r'^.brain(?:\s+(.*))?$'))
   async def brain(event):
     await brain_handle(client, event)
   
-  @client.on(events.NewMessage(outgoing=True, pattern=r'^//wtf(?:\s+(.*))?$'))
+  @client.on(events.NewMessage(outgoing=True, pattern=r'^.wtf(?:\s+(.*))?$'))
   async def wtf(event):
     await wtf_handle(client, event)
     
-  @client.on(events.NewMessage(outgoing=True, pattern=r'^//nah(?:\s+(.*))?$'))
+  @client.on(events.NewMessage(outgoing=True, pattern=r'^.nah(?:\s+(.*))?$'))
   async def nah(event):
     await nah_handle(client, event)
     
-  @client.on(events.NewMessage(outgoing=True, pattern=r'^//dino(?:\s+(.*))?$'))
+  @client.on(events.NewMessage(outgoing=True, pattern=r'^.dino(?:\s+(.*))?$'))
   async def dino(event):
     await dino_anim(client, event)
     
-  @client.on(events.NewMessage(outgoing=True, pattern=r'^//lover(?:\s+(.*))?$'))
+  @client.on(events.NewMessage(outgoing=True, pattern=r'^.lover(?:\s+(.*))?$'))
   async def lover(event):
     await lover_handle(client, event)
     
-  @client.on(events.NewMessage(outgoing=True, pattern=r'^//afk(?:\s+(.*))?$'))
+  @client.on(events.NewMessage(outgoing=True, pattern=r'^.afk(?:\s+(.*))?$'))
   async def afk(event):
     await afk_handle(client, event)
     
-  @client.on(events.NewMessage(outgoing=True, pattern=r'^//type(?:\s+(.*))?$'))
+  @client.on(events.NewMessage(outgoing=True, pattern=r'^.type(?:\s+(.*))?$'))
   async def type(event):
     await type_handle(client, event)
   
-  @client.on(events.NewMessage(outgoing=True, pattern=r'^//fuckyou(?:\s+(.*))?$'))
-  async def fuckyou(event):
-    await fuckyou_handle(client, event)
-
-  @client.on(events.NewMessage(outgoing=True, pattern=r'^//fuck(?:\s+(.*))?$'))
+  @client.on(events.NewMessage(outgoing=True, pattern=r'^.fuck(?:\s+(.*))?$'))
   async def fuck(event):
     await fuck_handle(client, event)
     
-  @client.on(events.NewMessage(outgoing=True, pattern=r'^//love(?:\s+(.*))?$'))
+  @client.on(events.NewMessage(outgoing=True, pattern=r'^.love(?:\s+(.*))?$'))
   async def love(event):
     await love_handle(client, event)
     
-  @client.on(events.NewMessage(outgoing=True, pattern=r'^//loveyou(?:\s+(.*))?$'))
+  @client.on(events.NewMessage(outgoing=True, pattern=r'^.loveyou(?:\s+(.*))?$'))
   async def loveyou(event):
     await loveyou_handle(client, event)
     
-  @client.on(events.NewMessage(outgoing=True, pattern=r'^//spam(?:\s+(.*))?$'))
+  @client.on(events.NewMessage(outgoing=True, pattern=r'^.spam(?:\s+(.*))?$'))
   async def spam(event):
     await spam_handle(client, event)
   
