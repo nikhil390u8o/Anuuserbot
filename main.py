@@ -3,13 +3,12 @@ import os
 import signal
 import sys
 from aiohttp import web
-from telethon import TelegramClient
+from telethon import TelegramClient, events
 from telethon.sessions import StringSession
 import config
 import bot_handlers
 import user_handlers
 from session import userbot, active_users, client_users, set_ping
-from firebase import fetch_and_append_sessions
 from config import bot
 
 PORT = int(os.getenv("PORT", 10000))
@@ -30,23 +29,26 @@ async def start_web():
 
 # ─────────── Userbot Manager ───────────
 async def run_userbot(session_str):
-    if session_str in active_users:
-        return
-    active_users.add(session_str)
-    client = TelegramClient(StringSession(session_str), config.API_ID, config.API_HASH)
-    try:
-        await client.start()
-        user_handlers.register(client)
-        me = await client.get_me()
-        client_users(me)
-        print(f"✅ Userbot {me.first_name} started")
-        await client.run_until_disconnected()
-    except Exception as e:
-        print(f"❌ Error in userbot: {e}")
-    finally:
+    while True:
         if session_str in active_users:
-            active_users.remove(session_str)
-        await client.disconnect()
+            await asyncio.sleep(5)
+            continue
+        active_users.add(session_str)
+        client = TelegramClient(StringSession(session_str), config.API_ID, config.API_HASH)
+        try:
+            await client.start()
+            user_handlers.register(client)
+            me = await client.get_me()
+            client_users(me)
+            print(f"✅ Userbot {me.first_name} started")
+            await client.run_until_disconnected()
+        except Exception as e:
+            print(f"❌ Userbot error: {e}")
+            await asyncio.sleep(5)
+        finally:
+            if session_str in active_users:
+                active_users.remove(session_str)
+            await client.disconnect()
 
 async def manage_userbots():
     while True:
@@ -59,8 +61,8 @@ async def manage_userbots():
 # ─────────── Main Bot ───────────
 async def run_main_bot():
     while True:
+        client = TelegramClient("bot_session", config.API_ID, config.API_HASH)
         try:
-            client = TelegramClient("bot_session", config.API_ID, config.API_HASH)
             await client.start(bot_token=config.BOT_TOKEN)
             set_ping()
             bot_handlers.register(client)
@@ -72,17 +74,15 @@ async def run_main_bot():
             await client.run_until_disconnected()
         except Exception as e:
             print(f"❌ Main bot crashed: {e}")
+            await asyncio.sleep(5)
         finally:
             await client.disconnect()
-            print("♻️ Restarting main bot in 5s...")
-            await asyncio.sleep(5)
 
 # ─────────── Entry Point ───────────
 async def main():
-    fetch_and_append_sessions()
-    await start_web()
-    asyncio.create_task(manage_userbots())
-    await run_main_bot()
+    await start_web()                     # Start web server
+    asyncio.create_task(manage_userbots())# Start userbots manager
+    await run_main_bot()                  # Start main bot
 
 def handle_exit(signum, frame):
     print("🛑 Shutting down...")
@@ -92,3 +92,4 @@ if __name__ == "__main__":
     signal.signal(signal.SIGINT, handle_exit)
     signal.signal(signal.SIGTERM, handle_exit)
     asyncio.run(main())
+
