@@ -1,20 +1,20 @@
 
 from bot.database import cli
 
-collection = cli["RAUSHAN"]["rraid"]
+collection = cli["bot"]["raid"]
 
 
-async def rraid_user(chat):
-    doc = {"_id": "Rraid", "users": [chat]}
-    r = await collection.find_one({"_id": "Rraid"})
+async def raid_user(chat):
+    doc = {"_id": "raid", "users": [chat]}
+    r = await collection.find_one({"_id": "raid"})
     if r:
-        await collection.update_one({"_id": "Rraid"}, {"$push": {"users": chat}})
+        await collection.update_one({"_id": "raid"}, {"$push": {"users": chat}})
     else:
         await collection.insert_one(doc)
 
 
-async def get_rraid_users():
-    results = await collection.find_one({"_id": "Rraid"})
+async def get_raid_users():
+    results = await collection.find_one({"_id": "raid"})
     if results:
         return results["users"]
     else:
@@ -22,4 +22,4 @@ async def get_rraid_users():
 
 
 async def unrraid_user(chat):
-    await collection.update_one({"_id": "Rraid"}, {"$pull": {"users": chat}})
+    await collection.update_one({"_id": "raid"}, {"$pull": {"users": chat}})
