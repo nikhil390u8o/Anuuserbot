@@ -1,5 +1,5 @@
 
-from bot.database import cli
+from PANDA.database import cli
 
 collection = cli["bot"]["raid"]
 
