@@ -10,7 +10,7 @@ IMG_URL = "https://files.catbox.moe/1f21lw.jpg"  # replace with your image
 
 def get_ping():
     start = time.time()
-    time.sleep(0.05)  # simulate delay
+    time.sleep(0.01)  # simulate delay
     end = time.time()
     ping_ms = (end - start) * 1000
     return f"{int(ping_ms)}ms"
@@ -46,8 +46,8 @@ def get_time(old_timestamp):
 # /ping command
 async def ping_handle(client, event):
     # Step 1: send "Pinging..." with image
-    buttons = [[Button.url("馃摙 Support", "https://t.me/YourSupportGroup")]]
-    msg = await event.respond("鈴� <b>Pinging...</b>", file=IMG_URL, parse_mode="html", buttons=buttons)
+    buttons = [[Button.url("𝐒𝐔𝐏𝐏𝐎𝐑𝐓", "https://t.me/YourSupportGroup")]]
+    msg = await event.respond("<b>ᴘɪɴɢɪɴɢ...</b>", file=IMG_URL, parse_mode="html", buttons=buttons)
 
     # Step 2: calculate ping & uptime
     ts = ping.get("time")
@@ -55,9 +55,9 @@ async def ping_handle(client, event):
     ms = get_ping()
 
     final_msg = (
-        "<blockquote>Pong! 馃彄</blockquote>\n"
-        f"鉃� <b>Ping</b> 鈥� {ms}\n"
-        f"鉃� <b>Uptime</b> 鈥� {since}\n"
+        "<blockquote>ᴘᴏɴɢ!!</blockquote>\n"
+        f" <b>ᴘɪɴɢ</b> {ms}\n"
+        f" <b>ᴜᴘᴛɪᴍᴇ</b> {since}\n"
     )
 
     # Step 3: edit same message
