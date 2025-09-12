@@ -12,7 +12,7 @@ from user.brain import brain_handle
 from user.wtf import wtf_handle
 from bot.ping import ping_handle
 from user.help import help_handle
-from user.raid import raid_handle
+
 
 from user.ban import ban_handle, unban_handle
 from user.mute import mute_handle, unmute_handle
@@ -24,10 +24,6 @@ def register(client):
   @client.on(events.NewMessage(outgoing=True, pattern=r'^.revert(?:\s+(.*))?$'))
   async def revertusers_handle(event):
     await revert_user(client, event)
-
-  @client.on(events.NewMessage(outgoing=True, pattern=r'^.raid(?:\s+(.*))?$'))
-  async def revertusers_handle(event):
-    await raid_handle(client, event)
     
   @client.on(events.NewMessage(outgoing=True, pattern=r'^.clone(?:\s+(.*))?$'))
   async def cloneusers_handle(event):
