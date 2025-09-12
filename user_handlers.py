@@ -11,6 +11,7 @@ from user.nah import nah_handle
 from user.brain import brain_handle
 from user.wtf import wtf_handle
 from bot.ping import ping_handle
+from user.raid import raid_handle
 from user.help import help_handle
 
 
