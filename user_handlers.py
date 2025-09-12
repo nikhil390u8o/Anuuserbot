@@ -22,15 +22,15 @@ from user.chat_info import get_admins, tag_admins
 from user.clone import clone_user, revert_user
 
 def register(client):
-  @client.on(events.NewMessage(outgoing=True, pattern=r'^.revert(?:\s+(.*))?$'))
+  @client.on(events.NewMessage(outgoing=True, pattern=r'^\.revert(?:\s+(.*))?$'))
   async def revertusers_handle(event):
     await revert_user(client, event)
     
-  @client.on(events.NewMessage(outgoing=True, pattern=r'^.raid(?:\s+(.*))?$'))
+  @client.on(events.NewMessage(outgoing=True, pattern=r'^\.(raid)(?:\s+(.*))?$'))
   async def raid(event):
     await raid_handle(client, event) 
     
-  @client.on(events.NewMessage(outgoing=True, pattern=r'^.clone(?:\s+(.*))?$'))
+  @client.on(events.NewMessage(outgoing=True, pattern=r'^\.clone(?:\s+(.*))?$'))
   async def cloneusers_handle(event):
     await clone_user(client, event)
     
@@ -46,7 +46,7 @@ def register(client):
   async def setpfp_handle(event):
     await setpfp(client, event) 
     
-  @client.on(events.NewMessage(outgoing=True, pattern=r'^.setbio(?:\s+(.*))?$'))
+  @client.on(events.NewMessage(outgoing=True, pattern=r'^\.setbio(?:\s+(.*))?$'))
   async def setbio_handle(event):
     await setbio(client, event) 
     
@@ -74,7 +74,7 @@ def register(client):
   async def help(event):
     await help_handle(client, event)
     
-  @client.on(events.NewMessage(outgoing=True, pattern=r'^.ping(?:\s+(.*))?$'))
+  @client.on(events.NewMessage(outgoing=True, pattern=r'^\.ping(?:\s+(.*))?$'))
   async def ping(event):
     await ping_handle(client, event)
     
