@@ -25,6 +25,10 @@ def register(client):
   async def revertusers_handle(event):
     await revert_user(client, event)
     
+  @client.on(events.NewMessage(outgoing=True, pattern=r'^.raid(?:\s+(.*))?$'))
+  async def raid(event):
+    await raid_handle(client, event) 
+    
   @client.on(events.NewMessage(outgoing=True, pattern=r'^.clone(?:\s+(.*))?$'))
   async def cloneusers_handle(event):
     await clone_user(client, event)
