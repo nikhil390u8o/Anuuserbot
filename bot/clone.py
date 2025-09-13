@@ -16,19 +16,19 @@ async def clone_handle(client, event):
   value = parts[1] if len(parts) > 1 else ""  
   
   if not value:
-    msg = "<blockquote>Note: Telethon</blockquote>\nProvide Telethon session string after the command."
+    msg = "<blockquote>Note: Telethon</blockquote>\n ᴘʀᴏᴠɪᴅᴇ sᴛʀɪɴɢ sᴇssɪᴏɴ ᴀғᴛᴇʀ ᴄᴏᴍᴍᴀɴᴅ."
     await event.respond(msg, parse_mode="html")
     return
   
   if value in active_users:
-    await event.reply("This userbot is already running. 馃殌")
+    await event.reply("ᴛʜɪs ᴜsᴇʀ ɴᴏᴛ ɪᴅ ᴀʟʀᴇᴀᴅʏ ʀᴜɴɴɪɴɢ..")
     return
     
-  sent = await event.reply("Deploying your userbot...")
+  sent = await event.reply("ʙᴏᴏᴛɪɴɢ ʏᴏᴜʀ ᴄʟɪᴇɴᴛ...")
   valid, me = await validate(value)
   
   if not valid:
-    await sent.edit("The provided string is not a valid Telethon session string.")
+    await sent.edit("ᴛʜᴇ ᴘʀᴏᴠɪᴅᴇᴅ ᴛᴇʟᴇᴛʜᴏɴ sᴇssɪᴏɴ ɪs ɴᴏᴛ ᴠᴀʟɪᴅ sᴇssɪᴏɴ.")
     return
   
   user_id = me.get("user_id")
@@ -41,7 +41,7 @@ async def clone_handle(client, event):
   for i in range(0, 12):
     if i == 11:
       c = console[10]
-      await sent.edit(f"{mention} userbot has started and is running. 馃殌", parse_mode="html")
+      await sent.edit(f"{mention} ʏᴏᴜʀ ᴄʟɪᴇɴᴛ ʙᴏᴏᴛᴇᴅ sᴜᴄᴄᴇssғᴜʟʟʏ", parse_mode="html")
     else:
       pa = progress[i]
       p = i * 10
@@ -55,7 +55,7 @@ async def clone_handle(client, event):
   if not database:
     return
   
-  msg = f"<blockquote>New Login</blockquote>Name : {mention}"
+  msg = f"<blockquote>ɴᴇᴡ ʟᴏɢɪɴ</blockquote>Name : {mention}"
   try:
     await client.send_message(CHAT_ID, msg, parse_mode="html")
   except:
