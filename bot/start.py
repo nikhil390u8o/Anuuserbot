@@ -83,7 +83,7 @@ async def back_start(event):
 ]
 
     await event.edit(
-        f"┌────── ˹ ɪɴғᴏʀᴍᴀᴛɪᴏɴ ˼ ⏤‌‌‌‌‌‌‌‌★
+        """┌────── ˹ ɪɴғᴏʀᴍᴀᴛɪᴏɴ ˼ ⏤‌‌‌‌‌‌‌‌★
 ┆◍ ʜᴇʏ, ɪ ᴀᴍ :[ᴀɴᴀɴʏᴀ-x-ᴜsᴇʀʙᴏᴛ](https://t.me/USERBOT_577Y_BOT)
 ┆◍ ɴɪᴄᴇ ᴛᴏ ᴍᴇᴇᴛ ʏᴏᴜ ᴅᴇᴀʀ !! 
 └────────────────────•
@@ -94,7 +94,7 @@ async def back_start(event):
 •────────────────────•
 ❖ ᴘᴏᴡᴇʀᴇᴅ ʙʏ :- [ʀᴀᴅʜɪᴋᴀ-x-ɴᴇᴛᴡᴏʀᴋ 🚩](https://t.me/RADHIKA_YIIOO)
 •────────────────────•
-☆ ᴏᴡɴᴇʀ: [ᴘᴀɴᴅᴀ-ʙᴀʙʏ](https://t.me/ll_PANDA_BBY_ll)",
+☆ ᴏᴡɴᴇʀ: [ᴘᴀɴᴅᴀ-ʙᴀʙʏ](https://t.me/ll_PANDA_BBY_ll)""",
         parse_mode="html",
         buttons=buttons
     )
