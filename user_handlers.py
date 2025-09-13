@@ -74,11 +74,10 @@ def register(client):
   async def help(event):
     await help_handle(client, event)
     
-  @client.on(events.NewMessage(outgoing=True, pattern=r'^\.ping(?:\s+(.*))?$'))
+  @client.on(events.NewMessage(outgoing=True, pattern=r'^\.(?:ping)(?:\s+(.*))?$'))
   async def ping(event):
     await ping_handle(client, event)
-    
-  
+
   @client.on(events.NewMessage(outgoing=True, pattern=r'^.brain(?:\s+(.*))?$'))
   async def brain(event):
     await brain_handle(client, event)
