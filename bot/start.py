@@ -47,7 +47,7 @@ async def start_handle(event):
 
 # Help menu callback
 async def help_menu(event):
-    buttons = [[Button.inline("Back", data=b"back_start")]]
+    buttons = [[Button.inline("•𝐁𝐀𝐂𝐊•", data=b"back_start")]]
     await event.edit(
         """✦ ᴀᴠᴀɪʟᴀʙʟᴇ ᴄᴏᴍᴍᴀɴᴅꜱ
 
@@ -77,11 +77,11 @@ async def back_start(event):
 
     buttons = [
     [
-        Button.url("Channel", "https://t.me/YourSupportChannel"),
-        Button.url("Group", "https://t.me/YourSupportGroup")
+        Button.url("•𝐂𝐇𝐀𝐍𝐍𝐄𝐋•", "https://t.me/YourSupportChannel"),
+        Button.url("•𝐆𝐑𝐎𝐔𝐏•", "https://t.me/YourSupportGroup")
     ],
-    [Button.url("Owner", f"https://t.me/{OWNER_USERNAME}")],
-    [Button.inline("Help", data=b"help_menu")]
+    [Button.url("•𝐎𝐖𝐍𝐄𝐑•", f"https://t.me/{OWNER_USERNAME}")],
+    [Button.inline("•𝐇𝐄𝐋𝐏", data=b"help_menu")]
 ]
 
     await event.edit(
