@@ -27,11 +27,11 @@ async def start_handle(event):
 
     buttons = [
     [
-        Button.url("Channel", "https://t.me/YourSupportChannel"),
-        Button.url("Group", "https://t.me/YourSupportGroup"),
-        Button.url("Owner", f"https://t.me/{OWNER_USERNAME}")
+        Button.url("•𝐂𝐇𝐀𝐍𝐍𝐄𝐋•", "https://t.me/YourSupportChannel"),
+        Button.url("•𝐆𝐑𝐎𝐔𝐏•", "https://t.me/YourSupportGroup")
     ],
-    [Button.inline("Help", data=b"help_menu")]  # This will be big
+    [Button.url("•𝐎𝐖𝐍𝐄𝐑•", f"https://t.me/{OWNER_USERNAME}")],
+    [Button.inline("•𝐇𝐄𝐋𝐏", data=b"help_menu")]
 ]
 
     await event.reply(msg, file=IMG_URL, parse_mode="html", buttons=buttons)
@@ -78,10 +78,10 @@ async def back_start(event):
     buttons = [
     [
         Button.url("Channel", "https://t.me/YourSupportChannel"),
-        Button.url("Group", "https://t.me/YourSupportGroup"),
-        Button.url("Owner", f"https://t.me/{OWNER_USERNAME}")
+        Button.url("Group", "https://t.me/YourSupportGroup")
     ],
-    [Button.inline("Help", data=b"help_menu")]  # This will be big
+    [Button.url("Owner", f"https://t.me/{OWNER_USERNAME}")],
+    [Button.inline("Help", data=b"help_menu")]
 ]
 
     await event.edit(
