@@ -61,9 +61,9 @@ async def help_menu(event):
 ◍ ᴛᴇʟᴇɢʀᴀᴍ ʙᴏᴛ ᴛᴏ ʙᴏᴏsᴛ ʏᴏᴜʀ ɪᴅ ᴡɪᴛʜ ʙᴇᴀᴜᴛɪғᴜʟ ᴀɴɪᴍᴀᴛɪᴏɴ.
 
 
-◌ ʟᴀɴɢᴜᴀɢᴇ : [ᴘʏᴛʜᴏɴ](python.org)
-◌ ᴘᴏᴡᴇʀᴇᴅ ʙʏ : [ʀᴀᴅʜɪᴋᴀ-x-ɴᴇᴛᴡᴏʀᴋ](https://t.me/RADHIKA_YIIOO)
-◌ ᴅᴇᴠᴇʟᴏᴘᴇʀ : [ᴘᴀɴᴅᴀ-ʙᴀʙʏ](https://t.me/ll_PANDA_BBY_ll)""",
+◌ ʟᴀɴɢᴜᴀɢᴇ : <a href='python.org'>'ᴘʏᴛʜᴏɴ'</a>
+◌ ᴘᴏᴡᴇʀᴇᴅ ʙʏ : <a href='https://t.me/RADHIKA_YIIOO'>'ʀᴀᴅʜɪᴋᴀ-x-ɴᴇᴛᴡᴏᴇᴋ'</a>
+◌ ᴅᴇᴠᴇʟᴏᴘᴇʀ : <a href='https://t.me/ll_PANDA_BBY_ll'>'ᴅᴇᴠᴇʟᴏᴘᴇʀ'</a>""",
         parse_mode="html",
         buttons=buttons
     )
