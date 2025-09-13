@@ -11,26 +11,28 @@ async def start_handle(event):
     owner = f'<a href="https://t.me/{OWNER_USERNAME}">{OWNER_NAME}</a>'
 
     msg = (
-         """┌────── ˹ ɪɴғᴏʀᴍᴀᴛɪᴏɴ ˼ ⏤‌‌‌‌‌‌‌‌★
-┆◍ ʜᴇʏ, ɪ ᴀᴍ :[ᴀɴᴀɴʏᴀ-x-ᴜsᴇʀʙᴏᴛ](https://t.me/USERBOT_577Y_BOT)
-┆◍ ɴɪᴄᴇ ᴛᴏ ᴍᴇᴇᴛ ʏᴏᴜ ᴅᴇᴀʀ !! 
-└────────────────────•
-❖ ɪ ᴀᴍ ᴀ ᴘᴏᴡᴇʀғᴜʟ & ᴜsᴇғᴜʟʟ ᴜsᴇʀʙᴏᴛ.
-❖ ʏᴏᴜ ᴄᴀɴ ᴜsᴇ ᴍᴇ ғᴏʀ ғᴜɴ ʀᴀɪᴅ sᴘᴀᴍ.
-❖ ɪ ᴄᴀɴ ʙᴏᴏsᴛ ʏᴏᴜʀ ɪᴅ ᴡɪᴛʜ ᴀɴɪᴍᴀᴛɪᴏɴ
-❖ ᴛᴀᴘ ᴛᴏ ʜᴇʟᴘ ʙᴜᴛᴛᴏɴ ғᴏʀ ᴅᴇᴛᴀɪʟs.
-•────────────────────•
-❖ ᴘᴏᴡᴇʀᴇᴅ ʙʏ :- [ʀᴀᴅʜɪᴋᴀ-x-ɴᴇᴛᴡᴏʀᴋ 🚩](https://t.me/RADHIKA_YIIOO)
-•────────────────────•
-☆ ᴏᴡɴᴇʀ: [ᴘᴀɴᴅᴀ-ʙᴀʙʏ](https://t.me/ll_PANDA_BBY_ll)"""
+        f"┌────── ˹ ɪɴғᴏʀᴍᴀᴛɪᴏɴ ˼ ⏤‌‌‌‌‌‌‌‌★\n"
+        f"┆◍ ʜᴇʏ {mention}, ɪ ᴀᴍ : <a href='https://t.me/USERBOT_577Y_BOT'>ᴀɴᴀɴʏᴀ-x-ᴜsᴇʀʙᴏᴛ</a>\n"
+        "┆◍ ɴɪᴄᴇ ᴛᴏ ᴍᴇᴇᴛ ʏᴏᴜ ᴅᴇᴀʀ !! \n"
+        "└────────────────────•\n"
+        "❖ ɪ ᴀᴍ ᴀ ᴘᴏᴡᴇʀғᴜʟ & ᴜsᴇғᴜʟʟ ᴜsᴇʀʙᴏᴛ.\n"
+        "❖ ʏᴏᴜ ᴄᴀɴ ᴜsᴇ ᴍᴇ ғᴏʀ ғᴜɴ ʀᴀɪᴅ sᴘᴀᴍ.\n"
+        "❖ ɪ ᴄᴀɴ ʙᴏᴏsᴛ ʏᴏᴜʀ ɪᴅ ᴡɪᴛʜ ᴀɴɪᴍᴀᴛɪᴏɴ\n"
+        "❖ ᴛᴀᴘ ᴛᴏ ʜᴇʟᴘ ʙᴜᴛᴛᴏɴ ғᴏʀ ᴅᴇᴛᴀɪʟs.\n"
+        "•────────────────────•\n"
+        "❖ ᴘᴏᴡᴇʀᴇᴅ ʙʏ :- <a href='https://t.me/RADHIKA_YIIOO'>ʀᴀᴅʜɪᴋᴀ-x-ɴᴇᴛᴡᴏʀᴋ 🚩</a>\n"
+        "•────────────────────•\n"
+        f"☆ ᴏᴡɴᴇʀ: {owner}"
     )
 
     buttons = [
-        [Button.url("Channel", "https://t.me/YourSupportChannel"),
-         Button.url("Group", "https://t.me/YourSupportGroup")],
-        [Button.url("Owner", f"https://t.me/{OWNER_USERNAME}"),
-         Button.inline("Help", data=b"help_menu")]
-    ]
+    [
+        Button.url("Channel", "https://t.me/YourSupportChannel"),
+        Button.url("Group", "https://t.me/YourSupportGroup"),
+        Button.url("Owner", f"https://t.me/{OWNER_USERNAME}")
+    ],
+    [Button.inline("Help", data=b"help_menu")]  # This will be big
+]
 
     await event.reply(msg, file=IMG_URL, parse_mode="html", buttons=buttons)
 
@@ -83,18 +85,18 @@ async def back_start(event):
 ]
 
     await event.edit(
-        """┌────── ˹ ɪɴғᴏʀᴍᴀᴛɪᴏɴ ˼ ⏤‌‌‌‌‌‌‌‌★
-┆◍ ʜᴇʏ, ɪ ᴀᴍ :[ᴀɴᴀɴʏᴀ-x-ᴜsᴇʀʙᴏᴛ](https://t.me/USERBOT_577Y_BOT)
-┆◍ ɴɪᴄᴇ ᴛᴏ ᴍᴇᴇᴛ ʏᴏᴜ ᴅᴇᴀʀ !! 
-└────────────────────•
-❖ ɪ ᴀᴍ ᴀ ᴘᴏᴡᴇʀғᴜʟ & ᴜsᴇғᴜʟʟ ᴜsᴇʀʙᴏᴛ.
-❖ ʏᴏᴜ ᴄᴀɴ ᴜsᴇ ᴍᴇ ғᴏʀ ғᴜɴ ʀᴀɪᴅ sᴘᴀᴍ.
-❖ ɪ ᴄᴀɴ ʙᴏᴏsᴛ ʏᴏᴜʀ ɪᴅ ᴡɪᴛʜ ᴀɴɪᴍᴀᴛɪᴏɴ
-❖ ᴛᴀᴘ ᴛᴏ ʜᴇʟᴘ ʙᴜᴛᴛᴏɴ ғᴏʀ ᴅᴇᴛᴀɪʟs.
-•────────────────────•
-❖ ᴘᴏᴡᴇʀᴇᴅ ʙʏ :- [ʀᴀᴅʜɪᴋᴀ-x-ɴᴇᴛᴡᴏʀᴋ 🚩](https://t.me/RADHIKA_YIIOO)
-•────────────────────•
-☆ ᴏᴡɴᴇʀ: [ᴘᴀɴᴅᴀ-ʙᴀʙʏ](https://t.me/ll_PANDA_BBY_ll)""",
+        f"┌────── ˹ ɪɴғᴏʀᴍᴀᴛɪᴏɴ ˼ ⏤‌‌‌‌‌‌‌‌★\n"
+        f"┆◍ ʜᴇʏ {mention}, ɪ ᴀᴍ : <a href='https://t.me/USERBOT_577Y_BOT'>ᴀɴᴀɴʏᴀ-x-ᴜsᴇʀʙᴏᴛ</a>\n"
+        "┆◍ ɴɪᴄᴇ ᴛᴏ ᴍᴇᴇᴛ ʏᴏᴜ ᴅᴇᴀʀ !! \n"
+        "└────────────────────•\n"
+        "❖ ɪ ᴀᴍ ᴀ ᴘᴏᴡᴇʀғᴜʟ & ᴜsᴇғᴜʟʟ ᴜsᴇʀʙᴏᴛ.\n"
+        "❖ ʏᴏᴜ ᴄᴀɴ ᴜsᴇ ᴍᴇ ғᴏʀ ғᴜɴ ʀᴀɪᴅ sᴘᴀᴍ.\n"
+        "❖ ɪ ᴄᴀɴ ʙᴏᴏsᴛ ʏᴏᴜʀ ɪᴅ ᴡɪᴛʜ ᴀɴɪᴍᴀᴛɪᴏɴ\n"
+        "❖ ᴛᴀᴘ ᴛᴏ ʜᴇʟᴘ ʙᴜᴛᴛᴏɴ ғᴏʀ ᴅᴇᴛᴀɪʟs.\n"
+        "•────────────────────•\n"
+        "❖ ᴘᴏᴡᴇʀᴇᴅ ʙʏ :- <a href='https://t.me/RADHIKA_YIIOO'>ʀᴀᴅʜɪᴋᴀ-x-ɴᴇᴛᴡᴏʀᴋ 🚩</a>\n"
+        "•────────────────────•\n"
+        f"☆ ᴏᴡɴᴇʀ: {owner}",
         parse_mode="html",
         buttons=buttons
     )
