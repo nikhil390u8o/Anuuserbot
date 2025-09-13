@@ -31,7 +31,7 @@ async def ping_handle(client, event):
 
     # Final styled message
     output = (
-        "❏   ❖ [ʀᴀᴅʜɪᴋᴀ-x-ɴᴇᴛᴡᴏʀᴋ](https://t.me/RADHIKA_YIIOO)  ™ ╮\n"
+         "❏   ❖ [ʀᴀᴅʜɪᴋᴀ-x-ɴᴇᴛᴡᴏʀᴋ](https://t.me/RADHIKA_YIIOO) ™ ╮\n"
         f"├•  ❖ 𝐒ᴘᴇᴇᴅ - `{ping_ms} ms`\n"
         f"├•  ❖ 𝐔ᴘᴛɪᴍᴇ - `{uptime}`\n"
         f"└•  ❖ 𝐍ᴀᴍᴇ: ⏤‌‌‌‌‌‌‌‌ `{fullname}`"
