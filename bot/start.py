@@ -47,10 +47,21 @@ async def start_handle(event):
 async def help_menu(event):
     buttons = [[Button.inline("Back", data=b"back_start")]]
     await event.edit(
-        "📖 <b>Help Menu</b>\n\n"
-        "➠ /gen – Generate a string session\n"
-        "➠ /clone <session> – Clone userbot\n"
-        "➠ /ping – Alive check",
+        """✦ ᴀᴠᴀɪʟᴀʙʟᴇ ᴄᴏᴍᴍᴀɴᴅꜱ
+
+➻ /start - ꜱᴛᴀʀᴛ ᴛʜᴇ ʙᴏᴛ
+➻ /gen - ʜᴏsᴛ ʏᴏᴜʀ ᴄʟɪᴇɴᴛ
+➻ /clone - ᴄʟᴏɴᴇ ᴠɪᴀ sᴛʀɪɴɢ sᴇssɪᴏɴ
+➻ /ping - ᴄʜᴇᴄᴋ ᴛʜᴇ ʙᴏᴛ ɪs ᴀʟɪᴠᴇ 
+
+✦ ᴀʙᴏᴜᴛ ᴛʜɪꜱ ʙᴏᴛ
+
+◍ ᴛᴇʟᴇɢʀᴀᴍ ʙᴏᴛ ᴛᴏ ʙᴏᴏsᴛ ʏᴏᴜʀ ɪᴅ ᴡɪᴛʜ ʙᴇᴀᴜᴛɪғᴜʟ ᴀɴɪᴍᴀᴛɪᴏɴ.
+
+
+◌ ʟᴀɴɢᴜᴀɢᴇ : [ᴘʏᴛʜᴏɴ](python.org)
+◌ ᴘᴏᴡᴇʀᴇᴅ ʙʏ : [ʀᴀᴅʜɪᴋᴀ-x-ɴᴇᴛᴡᴏʀᴋ](https://t.me/RADHIKA_YIIOO)
+◌ ᴅᴇᴠᴇʟᴏᴘᴇʀ : [ᴘᴀɴᴅᴀ-ʙᴀʙʏ](https://t.me/ll_PANDA_BBY_ll)""",
         parse_mode="html",
         buttons=buttons
     )
