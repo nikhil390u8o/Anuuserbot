@@ -63,11 +63,13 @@ async def back_start(event):
     owner = f'<a href="https://t.me/{OWNER_USERNAME}">{OWNER_NAME}</a>'
 
     buttons = [
-        [Button.url("Channel", "https://t.me/YourSupportChannel"),
-         Button.url("Group", "https://t.me/YourSupportGroup")],
-        [Button.url("Owner", f"https://t.me/{OWNER_USERNAME}"),
-         Button.inline("Help", data=b"help_menu")]
-    ]
+    [
+        Button.url("Channel", "https://t.me/YourSupportChannel"),
+        Button.url("Group", "https://t.me/YourSupportGroup"),
+        Button.url("Owner", f"https://t.me/{OWNER_USERNAME}")
+    ],
+    [Button.inline("Help", data=b"help_menu")]  # This will be big
+]
 
     await event.edit(
         f"┌────── ˹ ɪɴғᴏʀᴍᴀᴛɪᴏɴ ˼ ⏤‌‌‌‌‌‌‌‌★
