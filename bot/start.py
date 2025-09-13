@@ -11,7 +11,7 @@ async def start_handle(event):
     owner = f'<a href="https://t.me/{OWNER_USERNAME}">{OWNER_NAME}</a>'
 
     msg = (
-        f"┌────── ˹ ɪɴғᴏʀᴍᴀᴛɪᴏɴ ˼ ⏤‌‌‌‌‌‌‌‌★
+         """┌────── ˹ ɪɴғᴏʀᴍᴀᴛɪᴏɴ ˼ ⏤‌‌‌‌‌‌‌‌★
 ┆◍ ʜᴇʏ, ɪ ᴀᴍ :[ᴀɴᴀɴʏᴀ-x-ᴜsᴇʀʙᴏᴛ](https://t.me/USERBOT_577Y_BOT)
 ┆◍ ɴɪᴄᴇ ᴛᴏ ᴍᴇᴇᴛ ʏᴏᴜ ᴅᴇᴀʀ !! 
 └────────────────────•
@@ -22,7 +22,7 @@ async def start_handle(event):
 •────────────────────•
 ❖ ᴘᴏᴡᴇʀᴇᴅ ʙʏ :- [ʀᴀᴅʜɪᴋᴀ-x-ɴᴇᴛᴡᴏʀᴋ 🚩](https://t.me/RADHIKA_YIIOO)
 •────────────────────•
-☆ ᴏᴡɴᴇʀ: [ᴘᴀɴᴅᴀ-ʙᴀʙʏ](https://t.me/ll_PANDA_BBY_ll)"
+☆ ᴏᴡɴᴇʀ: [ᴘᴀɴᴅᴀ-ʙᴀʙʏ](https://t.me/ll_PANDA_BBY_ll)"""
     )
 
     buttons = [
