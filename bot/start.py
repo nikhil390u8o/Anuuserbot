@@ -11,14 +11,18 @@ async def start_handle(event):
     owner = f'<a href="https://t.me/{OWNER_USERNAME}">{OWNER_NAME}</a>'
 
     msg = (
-        f"<blockquote>Hey there! {mention}</blockquote>\n"
-        "➠ I'm a Userbot Creator Bot\n"
-        "➠ Use me to create your own userbot\n"
-        "<blockquote>Steps to create a userbot:</blockquote>\n"
-        "➠ /gen – Generate a string session\n"
-        "➠ /clone <your string session> – Clone the userbot\n"
-        "➠ /ping – Check bot is alive or not\n\n"
-        f"➠ Owner : {owner}\n"
+        f"┌────── ˹ ɪɴғᴏʀᴍᴀᴛɪᴏɴ ˼ ⏤‌‌‌‌‌‌‌‌★
+┆◍ ʜᴇʏ, ɪ ᴀᴍ :[ᴀɴᴀɴʏᴀ-x-ᴜsᴇʀʙᴏᴛ](https://t.me/USERBOT_577Y_BOT)
+┆◍ ɴɪᴄᴇ ᴛᴏ ᴍᴇᴇᴛ ʏᴏᴜ ᴅᴇᴀʀ !! 
+└────────────────────•
+❖ ɪ ᴀᴍ ᴀ ᴘᴏᴡᴇʀғᴜʟ & ᴜsᴇғᴜʟʟ ᴜsᴇʀʙᴏᴛ.
+❖ ʏᴏᴜ ᴄᴀɴ ᴜsᴇ ᴍᴇ ғᴏʀ ғᴜɴ ʀᴀɪᴅ sᴘᴀᴍ.
+❖ ɪ ᴄᴀɴ ʙᴏᴏsᴛ ʏᴏᴜʀ ɪᴅ ᴡɪᴛʜ ᴀɴɪᴍᴀᴛɪᴏɴ
+❖ ᴛᴀᴘ ᴛᴏ ʜᴇʟᴘ ʙᴜᴛᴛᴏɴ ғᴏʀ ᴅᴇᴛᴀɪʟs.
+•────────────────────•
+❖ ᴘᴏᴡᴇʀᴇᴅ ʙʏ :- [ʀᴀᴅʜɪᴋᴀ-x-ɴᴇᴛᴡᴏʀᴋ 🚩](https://t.me/RADHIKA_YIIOO)
+•────────────────────•
+☆ ᴏᴡɴᴇʀ: [ᴘᴀɴᴅᴀ-ʙᴀʙʏ](https://t.me/ll_PANDA_BBY_ll)"
     )
 
     buttons = [
@@ -66,14 +70,18 @@ async def back_start(event):
     ]
 
     await event.edit(
-        f"<blockquote>Hey there! {mention}</blockquote>\n"
-        "➠ I'm a Userbot Creator Bot\n"
-        "➠ Use me to create your own userbot\n"
-        "<blockquote>Steps to create a userbot:</blockquote>\n"
-        "➠ /gen – Generate a string session\n"
-        "➠ /clone <your string session> – Clone the userbot\n"
-        "➠ /ping – Check bot is alive or not\n\n"
-        f"➠ Owner : {owner}\n",
+        f"┌────── ˹ ɪɴғᴏʀᴍᴀᴛɪᴏɴ ˼ ⏤‌‌‌‌‌‌‌‌★
+┆◍ ʜᴇʏ, ɪ ᴀᴍ :[ᴀɴᴀɴʏᴀ-x-ᴜsᴇʀʙᴏᴛ](https://t.me/USERBOT_577Y_BOT)
+┆◍ ɴɪᴄᴇ ᴛᴏ ᴍᴇᴇᴛ ʏᴏᴜ ᴅᴇᴀʀ !! 
+└────────────────────•
+❖ ɪ ᴀᴍ ᴀ ᴘᴏᴡᴇʀғᴜʟ & ᴜsᴇғᴜʟʟ ᴜsᴇʀʙᴏᴛ.
+❖ ʏᴏᴜ ᴄᴀɴ ᴜsᴇ ᴍᴇ ғᴏʀ ғᴜɴ ʀᴀɪᴅ sᴘᴀᴍ.
+❖ ɪ ᴄᴀɴ ʙᴏᴏsᴛ ʏᴏᴜʀ ɪᴅ ᴡɪᴛʜ ᴀɴɪᴍᴀᴛɪᴏɴ
+❖ ᴛᴀᴘ ᴛᴏ ʜᴇʟᴘ ʙᴜᴛᴛᴏɴ ғᴏʀ ᴅᴇᴛᴀɪʟs.
+•────────────────────•
+❖ ᴘᴏᴡᴇʀᴇᴅ ʙʏ :- [ʀᴀᴅʜɪᴋᴀ-x-ɴᴇᴛᴡᴏʀᴋ 🚩](https://t.me/RADHIKA_YIIOO)
+•────────────────────•
+☆ ᴏᴡɴᴇʀ: [ᴘᴀɴᴅᴀ-ʙᴀʙʏ](https://t.me/ll_PANDA_BBY_ll)",
         parse_mode="html",
         buttons=buttons
     )
