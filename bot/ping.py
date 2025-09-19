@@ -60,8 +60,8 @@ async def ping_handle(client, event):
 
     final_msg = (
         "<blockquote>ᴘᴏɴɢ!!</blockquote>\n"
-        f" <b>岽樕瓷�</b> {ms}\n"
-        f" <b>岽溼礃岽浬磵岽�</b> {since}\n"
+        f" <b>ᴘᴏɴɢ</b> {ms}\n"
+        f" <b>ᴜᴘᴛɪᴍᴇ</b> {since}\n"
     )
 
     # Step 3: edit same message
