@@ -1,9 +1,9 @@
 async def sm_handle(client, event):
-    # ✅ Delete the command message FIRST (before sending anything)
+    # ✅ Delete the command message so it doesn't stay in chat
     try:
         await event.delete()
-    except Exception as e:
-        print(f"⚠️ Could not delete command message: {e}")
+    except:
+        pass  # ignore if can't delete
 
     messages = [
         "ʙᴀʙᴜ",
@@ -32,10 +32,8 @@ async def sm_handle(client, event):
 𝗕𝗢𝗧 𝗗𝗘𝗩 @ll_PANDA_BBY_ll [𝗦𝗠]"""
     ]
 
-    # ✅ Respond *after* deleting command message
+    # Send first message and start editing it step by step
     x = await event.respond("Starting...")
     for msg in messages:
         await x.edit(msg)
-        await asyncio.sleep(0.2)
-  # Speed of animation
-  # Change timing for animation speed
+        await asyncio.sleep(0.2)  # Speed of animation
