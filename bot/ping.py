@@ -6,7 +6,7 @@ from telethon import Button
 import time
 from session import ping
 
-VIDEO_URL = "https://t.me/BAMBI799U/139"  # replace with your image
+IMG_URL = "https://t.me/BAMBI799U/139"  # replace with your image
 
 def get_ping():
     start = time.time()
@@ -47,7 +47,7 @@ def get_time(old_timestamp):
 async def ping_handle(client, event):
     # Step 1: send "Pinging..." with image
     buttons = [[Button.url("𝐒𝐔𝐏𝐏𝐎𝐑𝐓", "https://t.me/YourSupportGroup")]]
-    msg = await event.respond("<b>ᴘɪɴɢɪɴɢ...</b>", file=VIDEO_URL, parse_mode="html", buttons=buttons)
+    msg = await event.respond("<b>ᴘɪɴɢɪɴɢ...</b>", file=IMG_URL, parse_mode="html", buttons=buttons)
 
     # Step 2: calculate ping & uptime
     ts = ping.get("time")
