@@ -30,7 +30,7 @@ async def wtf_handle(client, event):
         text += wtf[i:i+chunk_size]
         safe_text = text + "\u2060"  # Invisible char to force update
         await event.edit(safe_text)
-        await asyncio.sleep(0.00)  # super fast animation
+        await asyncio.sleep(0.01)  # super fast animation
 
     # After animation, send clickable image with final text
     random_link = random.choice(links)
