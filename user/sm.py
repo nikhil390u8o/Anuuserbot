@@ -36,4 +36,4 @@ async def sm_handle(client, event):
     x = await event.respond("Starting...")
     for msg in messages:
         await x.edit(msg)
-        await asyncio.sleep(0.7)  # Spee
+        await asyncio.sleep(0.2)  # Spee
