@@ -1,7 +1,7 @@
 import asyncio
 from telethon import errors
 
-async def sm_handle(client, event):
+async def marco_handle(client, event):
     # try to delete the command message (force)
     try:
         await client.delete_messages(event.chat_id, [event.message.id])
