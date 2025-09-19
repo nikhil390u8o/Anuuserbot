@@ -4,19 +4,19 @@
 
 from telethon import Button
 import time
-from session import ping
+from session import ping  # dictionary storing bot start time
 
-IMG_URL = "https://t.me/BAMBI799U/139"  # replace with your image
+CHANNEL = "BAMBI799U"  # channel username
+MSG_ID = 139            # message ID of the video
 
 def get_ping():
     start = time.time()
-    time.sleep(0.01)  # simulate delay
+    time.sleep(0.01)
     end = time.time()
-    ping_ms = (end - start) * 1000
-    return f"{int(ping_ms)}ms"
+    return f"{int((end - start) * 1000)}ms"
 
-def get_time(old_timestamp):
-    seconds = int(time.time()) - int(old_timestamp)
+def get_uptime(start_timestamp):
+    seconds = int(time.time()) - int(start_timestamp)
 
     minute = 60
     hour = 60 * minute
@@ -43,22 +43,30 @@ def get_time(old_timestamp):
 
     return " ".join(result)
 
-# /ping command
+# ───────────── /ping Handler ─────────────
 async def ping_handle(client, event):
-    # Step 1: send "Pinging..." with image
     buttons = [[Button.url("𝐒𝐔𝐏𝐏𝐎𝐑𝐓", "https://t.me/YourSupportGroup")]]
-    msg = await event.respond("<b>ᴘɪɴɢɪɴɢ...</b>", file=IMG_URL, parse_mode="html", buttons=buttons)
 
-    # Step 2: calculate ping & uptime
-    ts = ping.get("time")
-    since = get_time(ts)
-    ms = get_ping()
+    # Step 1: Get the video from Telegram channel
+    try:
+        video_msg = await client.get_messages(CHANNEL, ids=MSG_ID)
+        media = video_msg.media
+    except Exception as e:
+        await event.respond(f"❌ Failed to get video: {e}")
+        return
 
-    final_msg = (
+    # Step 2: Send "Pinging..." with video
+    msg = await event.respond("<b>ᴘɪɴɢɪɴɢ...</b>", file=media, parse_mode="html", buttons=buttons)
+
+    # Step 3: Calculate ping & uptime
+    start_ts = ping.get("time", time.time())
+    uptime = get_uptime(start_ts)
+    latency = get_ping()
+
+    # Step 4: Edit the same message with stats
+    final_text = (
         "<blockquote>ᴘᴏɴɢ!!</blockquote>\n"
-        f" <b>ᴘɪɴɢ</b> {ms}\n"
-        f" <b>ᴜᴘᴛɪᴍᴇ</b> {since}\n"
+        f"<b>ᴘɪɴɢ:</b> {latency}\n"
+        f"<b>ᴜᴘᴛɪᴍᴇ:</b> {uptime}\n"
     )
-
-    # Step 3: edit same message
-    await msg.edit(final_msg, parse_mode="html", buttons=buttons)
+    await msg.edit(final_text, parse_mode="html", buttons=buttons)
