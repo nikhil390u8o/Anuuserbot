@@ -34,7 +34,7 @@ async def help_handle(client, event):
         "> `.type`\n"
         "> `.wtf`\n\n"
         "**Support**\n"
-        "𝗦𝗨𝗣𝗣𝗢𝗥𝗧 𝗖𝗛𝗔𝗡𝗡𝗘𝗟: @YourSupportChannel\n"
+        "𝗦𝗨𝗣𝗣𝗢𝗥𝗧 𝗖𝗛𝗔𝗡𝗡𝗘𝗟: @RADHIKA_YIIOO\n"
         "𝗢𝗪𝗡𝗘𝗥: @Mn4xd"
     )
 
