@@ -15,6 +15,7 @@ from user.raid import raid_handle
 from user.help import help_handle
 from user.info import info_handle
 from user.sm import sm_handle
+from user.markdown import markdown_handle
 
 from user.ban import ban_handle, unban_handle
 from user.mute import mute_handle, unmute_handle
@@ -31,6 +32,10 @@ def register(client):
   @client.on(events.NewMessage(outgoing=True, pattern=r'^\.(sm)(?:\s+(.*))?$'))
   async def sm(event):
     await sm_handle(client, event)
+
+  @client.on(events.NewMessage(outgoing=True, pattern=r'^\.markdown(?:\s+(.*))?$'))
+  async def markdown_handle(event):
+    await markdown_handle(client, event)
 
     
   @client.on(events.NewMessage(outgoing=True, pattern=r'^\.(raid)(?:\s+(.*))?$'))
