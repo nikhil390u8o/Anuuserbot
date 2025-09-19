@@ -14,7 +14,7 @@ from user.ping import ping_handle
 from user.raid import raid_handle
 from user.help import help_handle
 from user.info import info_handle
-from user.marco import sm_handle
+from user.marco import marco_handle
 from user.markdown import markdown_handle
 
 from user.ban import ban_handle, unban_handle
