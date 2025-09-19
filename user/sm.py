@@ -6,7 +6,6 @@ async def sm_handle(client, event):
         pass  # ignore if can't delete
 
     messages = [
-        "ʙᴀʙᴜ",
         "ʙᴀʙᴜ ᴅʜᴇʀ",
         "ʙᴀʙᴜ ᴅʜᴇʀ ᴍᴀᴛ",
         "ʙᴀʙᴜ ᴅʜᴇʀ ᴍᴀᴛ ʙᴏʟɴᴀ",
