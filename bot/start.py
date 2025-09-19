@@ -1,18 +1,21 @@
 from telethon import Button, events
+from telethon.tl.functions.messages import GetMessagesRequest
 from config import OWNER_NAME, OWNER_USERNAME
 from firebase import add_new_user
 
-VIDEO_URL = "https://t.me/BAMBI799U/139"
+# Telegram post for media
+VIDEO_CHANNEL = "BAMBI799U"
+VIDEO_ID = 139  # ID of the post in the channel
 
-# /start command
-async def start_handle(event):
+# ───────────── /start Command ─────────────
+async def start_handle(client, event):
     user = await event.get_sender()
     mention = f'<a href="tg://user?id={user.id}">{user.first_name}</a>'
     owner = f'<a href="https://t.me/{OWNER_USERNAME}">{OWNER_NAME}</a>'
 
-    msg = (
+    msg_text = (
         f"┌────── ˹ ɪɴғᴏʀᴍᴀᴛɪᴏɴ ˼ ⏤‌‌‌‌‌‌‌‌★\n"
-        f"┆◍ ʜᴇʏ {mention}, ɪ ᴀᴍ : <a href='http://t.me/MANIAC_USR_BOT'>ᴍᴀɴɪᴀᴄ-x-ᴜsᴇʀʙᴏᴛ</a>\n"
+        f"┆◍ ʜᴇʏ {mention}, ɪ ᴀᴍ : <a href='https://t.me/MANIAC_USR_BOT'>ᴍᴀɴɪᴀᴄ-x-ᴜsᴇʀʙᴏᴛ</a>\n"
         "┆◍ ɴɪᴄᴇ ᴛᴏ ᴍᴇᴇᴛ ʏᴏᴜ ᴅᴇᴀʀ !! \n"
         "└────────────────────•\n"
         "❖ ɪ ᴀᴍ ᴀ ᴘᴏᴡᴇʀғᴜʟ & ᴜsᴇғᴜʟʟ ᴜsᴇʀʙᴏᴛ.\n"
@@ -26,15 +29,22 @@ async def start_handle(event):
     )
 
     buttons = [
-    [
-        Button.url("•𝐂𝐇𝐀𝐍𝐍𝐄𝐋•", "https://t.me/YourSupportChannel"),
-        Button.url("•𝐆𝐑𝐎𝐔𝐏•", "https://t.me/YourSupportGroup")
-    ],
-    [Button.url("•𝐎𝐖𝐍𝐄𝐑•", f"https://t.me/{OWNER_USERNAME}")],
-    [Button.inline("•𝐇𝐄𝐋𝐏", data=b"help_menu")]
-]
+        [Button.url("•𝐂𝐇𝐀𝐍𝐍𝐄𝐋•", "https://t.me/YourSupportChannel"),
+         Button.url("•𝐆𝐑𝐎𝐔𝐏•", "https://t.me/YourSupportGroup")],
+        [Button.url("•𝐎𝐖𝐍𝐄𝐑•", f"https://t.me/{OWNER_USERNAME}")],
+        [Button.inline("•𝐇𝐄𝐋𝐏", data=b"help_menu")]
+    ]
 
-    await event.reply(msg, file=VIDEO_URL, parse_mode="html", buttons=buttons)
+    # Fetch media from channel post
+    channel_entity = await client.get_entity(VIDEO_CHANNEL)
+    message = await client.get_messages(channel_entity, ids=VIDEO_ID)
+
+    await event.reply(
+        msg_text,
+        file=message.media if message and message.media else None,
+        parse_mode="html",
+        buttons=buttons
+    )
 
     # Save user in Firebase
     data = {
@@ -45,46 +55,30 @@ async def start_handle(event):
     }
     add_new_user(data)
 
-# Help menu callback
+# ───────────── Help Menu Callback ─────────────
 async def help_menu(event):
     buttons = [[Button.inline("•𝐁𝐀𝐂𝐊•", data=b"back_start")]]
-    await event.edit(
-        """✦ ᴀᴠᴀɪʟᴀʙʟᴇ ᴄᴏᴍᴍᴀɴᴅꜱ
-
-➻ /start - ꜱᴛᴀʀᴛ ᴛʜᴇ ʙᴏᴛ
-➻ /gen - ʜᴏsᴛ ʏᴏᴜʀ ᴄʟɪᴇɴᴛ
-➻ /clone - ᴄʟᴏɴᴇ ᴠɪᴀ sᴛʀɪɴɢ sᴇssɪᴏɴ
-➻ /ping - ᴄʜᴇᴄᴋ ᴛʜᴇ ʙᴏᴛ ɪs ᴀʟɪᴠᴇ 
-
-✦ ᴀʙᴏᴜᴛ ᴛʜɪꜱ ʙᴏᴛ
-
-◍ ᴛᴇʟᴇɢʀᴀᴍ ʙᴏᴛ ᴛᴏ ʙᴏᴏsᴛ ʏᴏᴜʀ ɪᴅ ᴡɪᴛʜ ʙᴇᴀᴜᴛɪғᴜʟ ᴀɴɪᴍᴀᴛɪᴏɴ.
-
-
-◌ ʟᴀɴɢᴜᴀɢᴇ : <a href='python.org'>'ᴘʏᴛʜᴏɴ'</a>
-◌ ᴘᴏᴡᴇʀᴇᴅ ʙʏ : <a href='https://t.me/RADHIKA_YIIOO'>'ʀᴀᴅʜɪᴋᴀ-x-ɴᴇᴛᴡᴏᴇᴋ'</a>
-◌ ᴅᴇᴠᴇʟᴏᴘᴇʀ : <a href='https://t.me/ll_PANDA_BBY_ll'>'ᴅᴇᴠᴇʟᴏᴘᴇʀ'</a>""",
-        parse_mode="html",
-        buttons=buttons
+    help_text = (
+        "✦ ᴀᴠᴀɪʟᴀʙʟᴇ ᴄᴏᴍᴍᴀɴᴅꜱ\n\n"
+        "➻ /start - ꜱᴛᴀʀᴛ ᴛʜᴇ ʙᴏᴛ\n"
+        "➻ /gen - ʜᴏsᴛ ʏᴏᴜʀ ᴄʟɪᴇɴᴛ\n"
+        "➻ /clone - ᴄʟᴏɴᴇ ᴠɪᴀ sᴛʀɪɴɢ sᴇssɪᴏɴ\n"
+        "➻ /ping - ᴄʜᴇᴄᴋ ᴛʜᴇ ʙᴏᴛ ɪs ᴀʟɪᴠᴇ\n\n"
+        "✦ ᴀʙᴏᴜᴛ ᴛʜɪꜱ ʙᴏᴛ\n\n"
+        "◍ ᴛᴇʟᴇɢʀᴀᴍ ʙᴏᴛ ᴛᴏ ʙᴏᴏsᴛ ʏᴏᴜʀ ɪᴅ ᴡɪᴛʜ ʙᴇᴀᴜᴛɪғᴜʟ ᴀɴɪᴍᴀᴛɪᴏɴ.\n\n"
+        "◌ ʟᴀɴɢᴜᴀɢᴇ : <a href='https://python.org'>Python</a>\n"
+        "◌ ᴘᴏᴡᴇʀᴇᴅ ʙʏ : <a href='https://t.me/RADHIKA_YIIOO'>ʀᴀᴅʜɪᴋᴀ-x-ɴᴇᴛᴡᴏʀᴋ</a>\n"
+        "◌ ᴅᴇᴠᴇʟᴏᴘᴇʀ : <a href='https://t.me/ll_PANDA_BBY_ll'>Developer</a>"
     )
+    await event.edit(help_text, parse_mode="html", buttons=buttons)
 
-# Back button callback
-# Back button callback
+# ───────────── Back Button Callback ─────────────
 async def back_start(event):
     user = await event.get_sender()
     mention = f'<a href="tg://user?id={user.id}">{user.first_name}</a>'
     owner = f'<a href="https://t.me/{OWNER_USERNAME}">{OWNER_NAME}</a>'
 
-    buttons = [
-    [
-        Button.url("•𝐂𝐇𝐀𝐍𝐍𝐄𝐋•", "https://t.me/YourSupportChannel"),
-        Button.url("•𝐆𝐑𝐎𝐔𝐏•", "https://t.me/YourSupportGroup")
-    ],
-    [Button.url("•𝐎𝐖𝐍𝐄𝐑•", f"https://t.me/{OWNER_USERNAME}")],
-    [Button.inline("•𝐇𝐄𝐋𝐏", data=b"help_menu")]
-]
-
-    await event.edit(
+    msg_text = (
         f"┌────── ˹ ɪɴғᴏʀᴍᴀᴛɪᴏɴ ˼ ⏤‌‌‌‌‌‌‌‌★\n"
         f"┆◍ ʜᴇʏ {mention}, ɪ ᴀᴍ : <a href='https://t.me/USERBOT_577Y_BOT'>ᴀɴᴀɴʏᴀ-x-ᴜsᴇʀʙᴏᴛ</a>\n"
         "┆◍ ɴɪᴄᴇ ᴛᴏ ᴍᴇᴇᴛ ʏᴏᴜ ᴅᴇᴀʀ !! \n"
@@ -96,7 +90,14 @@ async def back_start(event):
         "•────────────────────•\n"
         "❖ ᴘᴏᴡᴇʀᴇᴅ ʙʏ :- <a href='https://t.me/RADHIKA_YIIOO'>ʀᴀᴅʜɪᴋᴀ-x-ɴᴇᴛᴡᴏʀᴋ 🚩</a>\n"
         "•────────────────────•\n"
-        f"☆ ᴏᴡɴᴇʀ: {owner}",
-        parse_mode="html",
-        buttons=buttons
+        f"☆ ᴏᴡɴᴇʀ: {owner}"
     )
+
+    buttons = [
+        [Button.url("•𝐂𝐇𝐀𝐍𝐍𝐄𝐋•", "https://t.me/YourSupportChannel"),
+         Button.url("•𝐆𝐑𝐎𝐔𝐏•", "https://t.me/YourSupportGroup")],
+        [Button.url("•𝐎𝐖𝐍𝐄𝐑•", f"https://t.me/{OWNER_USERNAME}")],
+        [Button.inline("•𝐇𝐄𝐋𝐏", data=b"help_menu")]
+    ]
+
+    await event.edit(msg_text, parse_mode="html", buttons=buttons)
