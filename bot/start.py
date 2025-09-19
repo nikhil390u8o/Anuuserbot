@@ -29,11 +29,13 @@ async def start_handle(client, event):
     )
 
     buttons = [
-        [Button.url("•𝐂𝐇𝐀𝐍𝐍𝐄𝐋•", "https://t.me/YourSupportChannel"),
-         Button.url("•𝐆𝐑𝐎𝐔𝐏•", "https://t.me/YourSupportGroup")],
-        [Button.url("•𝐎𝐖𝐍𝐄𝐑•", f"https://t.me/{OWNER_USERNAME}")],
-        [Button.inline("•𝐇𝐄𝐋𝐏", data=b"help_menu")]
-    ]
+    [
+        Button.url("•𝐂𝐇𝐀𝐍𝐍𝐄𝐋•", "https://t.me/YourSupportChannel"),
+        Button.url("•𝐆𝐑𝐎𝐔𝐏•", "https://t.me/YourSupportGroup")
+    ],
+    [Button.url("•𝐎𝐖𝐍𝐄𝐑•", f"https://t.me/{OWNER_USERNAME}")],
+    [Button.inline("•𝐇𝐄𝐋𝐏", data=b"help_menu")]
+]
 
     # Fetch media from channel post
     channel_entity = await client.get_entity(VIDEO_CHANNEL)
@@ -94,10 +96,12 @@ async def back_start(event):
     )
 
     buttons = [
-        [Button.url("•𝐂𝐇𝐀𝐍𝐍𝐄𝐋•", "https://t.me/YourSupportChannel"),
-         Button.url("•𝐆𝐑𝐎𝐔𝐏•", "https://t.me/YourSupportGroup")],
-        [Button.url("•𝐎𝐖𝐍𝐄𝐑•", f"https://t.me/{OWNER_USERNAME}")],
-        [Button.inline("•𝐇𝐄𝐋𝐏", data=b"help_menu")]
-    ]
+    [
+        Button.url("•𝐂𝐇𝐀𝐍𝐍𝐄𝐋•", "https://t.me/YourSupportChannel"),
+        Button.url("•𝐆𝐑𝐎𝐔𝐏•", "https://t.me/YourSupportGroup")
+    ],
+    [Button.url("•𝐎𝐖𝐍𝐄𝐑•", f"https://t.me/{OWNER_USERNAME}")],
+    [Button.inline("•𝐇𝐄𝐋𝐏", data=b"help_menu")]
+]
 
     await event.edit(msg_text, parse_mode="html", buttons=buttons)
