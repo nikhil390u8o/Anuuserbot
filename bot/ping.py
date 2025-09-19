@@ -10,7 +10,7 @@ from telethon import Button
 import time
 from session import ping
 
-IMG_URL = "https://t.me/BAMBI799U/139"  # replace with your image
+IMG_URL = "https://files.catbox.moe/c8l3e3.jpg"  # replace with your image
 
 def get_ping():
     start = time.time()
