@@ -2,7 +2,7 @@ from telethon import Button, events
 from config import OWNER_NAME, OWNER_USERNAME
 from firebase import add_new_user
 
-VIDEO_URL = "https://files.catbox.moe/1f21lw.jpg"
+VIDEO_URL = "https://t.me/BAMBI799U/139"
 
 # /start command
 async def start_handle(event):
