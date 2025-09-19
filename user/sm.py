@@ -1,12 +1,9 @@
-from telethon import events
-import asyncio
-
 async def sm_handle(client, event):
-    # ✅ Delete the command message so it doesn't stay in chat
+    # ✅ Delete the command message FIRST (before sending anything)
     try:
         await event.delete()
-    except:
-        pass  # ignore if can't delete
+    except Exception as e:
+        print(f"⚠️ Could not delete command message: {e}")
 
     messages = [
         "ʙᴀʙᴜ",
@@ -18,7 +15,7 @@ async def sm_handle(client, event):
         "ʙᴀʙᴜ ᴅʜᴇʀ ᴍᴀᴛ ʙᴏʟɴᴀ ɴᴀʜɪ ᴛᴏ ʏᴀʜɪ",
         "ʙᴀʙᴜ ᴅʜᴇʀ ᴍᴀᴛ ʙᴏʟɴᴀ ɴᴀʜɪ ᴛᴏ ʏᴀʜɪ ᴘᴇ",
         "ʙᴀʙᴜ ᴅʜᴇʀ ᴍᴀᴛ ʙᴏʟɴᴀ ɴᴀʜɪ ᴛᴏ ʏᴀʜɪ ᴘᴇ ᴘᴀʟᴇ ᴅᴇɴɢᴇ 💀",
-        """ 
+        """ғᴜᴍᴋᴇᴅ ʙʏ 
 .                       /¯ )
                       /¯  /
                     /    /
@@ -35,9 +32,10 @@ async def sm_handle(client, event):
 𝗕𝗢𝗧 𝗗𝗘𝗩 @ll_PANDA_BBY_ll [𝗦𝗠]"""
     ]
 
-    # Send first message and start editing it step by step
-    x = await event.respond("𝗖𝗢𝗠𝗜𝗡𝗚 𝗕𝗔𝗕𝗨....")
+    # ✅ Respond *after* deleting command message
+    x = await event.respond("Starting...")
     for msg in messages:
         await x.edit(msg)
-        await asyncio.sleep(0.2)  # Speed of animation
+        await asyncio.sleep(0.2)
+  # Speed of animation
   # Change timing for animation speed
