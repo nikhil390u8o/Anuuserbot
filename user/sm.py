@@ -1,9 +1,13 @@
 from telethon import events
 import asyncio
 
-
-# New handler function
 async def sm_handle(client, event):
+    # ✅ Delete the command message so it doesn't stay in chat
+    try:
+        await event.delete()
+    except:
+        pass  # ignore if can't delete
+
     messages = [
         "ʙᴀʙᴜ",
         "ʙᴀʙᴜ ᴅʜᴇʀ",
@@ -14,7 +18,7 @@ async def sm_handle(client, event):
         "ʙᴀʙᴜ ᴅʜᴇʀ ᴍᴀᴛ ʙᴏʟɴᴀ ɴᴀʜɪ ᴛᴏ ʏᴀʜɪ",
         "ʙᴀʙᴜ ᴅʜᴇʀ ᴍᴀᴛ ʙᴏʟɴᴀ ɴᴀʜɪ ᴛᴏ ʏᴀʜɪ ᴘᴇ",
         "ʙᴀʙᴜ ᴅʜᴇʀ ᴍᴀᴛ ʙᴏʟɴᴀ ɴᴀʜɪ ᴛᴏ ʏᴀʜɪ ᴘᴇ ᴘᴀʟᴇ ᴅᴇɴɢᴇ 💀",
-        """ғᴜᴍᴋᴇᴅ ʙʏ 
+        """ 
 .                       /¯ )
                       /¯  /
                     /    /
@@ -31,7 +35,9 @@ async def sm_handle(client, event):
 𝗕𝗢𝗧 𝗗𝗘𝗩 @ll_PANDA_BBY_ll [𝗦𝗠]"""
     ]
 
-    x = await event.respond("ᴄᴏᴍɪɴɢ ʙᴇᴛᴀ ᴊɪ 😈...")
+    # Send first message and start editing it step by step
+    x = await event.respond("𝗖𝗢𝗠𝗜𝗡𝗚 𝗕𝗔𝗕𝗨....")
     for msg in messages:
         await x.edit(msg)
-        await asyncio.sleep(0.1)  # Change timing for animation speed
+        await asyncio.sleep(0.2)  # Speed of animation
+  # Change timing for animation speed
