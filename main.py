@@ -2,6 +2,7 @@ import asyncio
 import os
 import signal
 import sys
+import subprocess
 from aiohttp import web
 from telethon import TelegramClient, events
 from telethon.sessions import StringSession
@@ -11,6 +12,19 @@ import user_handlers
 from session import userbot, active_users, client_users, set_ping
 from config import bot
 
+# ─────────── Kill Old Instances ───────────
+def kill_old_instances():
+    try:
+        result = subprocess.run(["pgrep", "-f", "main.py"], capture_output=True, text=True)
+        for pid in result.stdout.splitlines():
+            if pid and int(pid) != os.getpid():
+                print(f"🔪 Killing old bot process PID: {pid}")
+                os.kill(int(pid), signal.SIGKILL)
+    except Exception as e:
+        print(f"⚠️ Could not auto-kill old instances: {e}")
+
+kill_old_instances()
+
 PORT = int(os.getenv("PORT", 10000))
 
 # ─────────── Web Server ───────────
@@ -18,14 +32,24 @@ async def handle(request):
     return web.Response(text="✅ Bot is alive!")
 
 async def start_web():
+    global PORT
     app = web.Application()
     app.router.add_get("/", handle)
     runner = web.AppRunner(app)
     await runner.setup()
-    site = web.TCPSite(runner, "0.0.0.0", PORT)
-    await site.start()
-    print(f"🌍 Web server started on port {PORT}")
-    return runner
+
+    while True:
+        try:
+            site = web.TCPSite(runner, "0.0.0.0", PORT)
+            await site.start()
+            print(f"🌍 Web server started on port {PORT}")
+            return runner
+        except OSError as e:
+            if e.errno == 98:  # Address already in use
+                print(f"⚠️ Port {PORT} is busy. Trying next...")
+                PORT += 1
+            else:
+                raise
 
 # ─────────── Userbot Manager ───────────
 async def run_userbot(session_str):
@@ -80,7 +104,7 @@ async def run_main_bot():
 
 # ─────────── Entry Point ───────────
 async def main():
-    await start_web()                     # Start web server
+    await start_web()                     # Start web server (auto-port switch)
     asyncio.create_task(manage_userbots())# Start userbots manager
     await run_main_bot()                  # Start main bot
 
@@ -92,4 +116,5 @@ if __name__ == "__main__":
     signal.signal(signal.SIGINT, handle_exit)
     signal.signal(signal.SIGTERM, handle_exit)
     asyncio.run(main())
+
 
