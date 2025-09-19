@@ -12,7 +12,7 @@ async def start_handle(event):
 
     msg = (
         f"┌────── ˹ ɪɴғᴏʀᴍᴀᴛɪᴏɴ ˼ ⏤‌‌‌‌‌‌‌‌★\n"
-        f"┆◍ ʜᴇʏ {mention}, ɪ ᴀᴍ : <a href='https://t.me/USERBOT_577Y_BOT'>ᴀɴᴀɴʏᴀ-x-ᴜsᴇʀʙᴏᴛ</a>\n"
+        f"┆◍ ʜᴇʏ {mention}, ɪ ᴀᴍ : <a href='https://http://t.me/MANIAC_USR_BOT'>ᴍᴀɴɪᴀᴄ-x-ᴜsᴇʀʙᴏᴛ</a>\n"
         "┆◍ ɴɪᴄᴇ ᴛᴏ ᴍᴇᴇᴛ ʏᴏᴜ ᴅᴇᴀʀ !! \n"
         "└────────────────────•\n"
         "❖ ɪ ᴀᴍ ᴀ ᴘᴏᴡᴇʀғᴜʟ & ᴜsᴇғᴜʟʟ ᴜsᴇʀʙᴏᴛ.\n"
