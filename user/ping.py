@@ -17,7 +17,7 @@ async def ping_handle(client, event):
 
     # Show progress from 20 to 100
     for percent in range(20, 101, 10):
-        await asyncio.sleep(0.12)
+        await asyncio.sleep(0.10)
         await loading.edit(f"ᴘɪɴɢɪɴɢ... {percent}%**")
 
     # Calculate latency & uptime
