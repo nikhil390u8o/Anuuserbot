@@ -2,21 +2,25 @@
 
 
 
+
+
+
+
 from telethon import Button
 import time
-from session import ping  # dictionary storing bot start time
+from session import ping
 
-CHANNEL = "BAMBI799U"  # channel username
-MSG_ID = 139            # message ID of the video
+IMG_URL = "https://t.me/BAMBI799U/139"  # replace with your image
 
 def get_ping():
     start = time.time()
-    time.sleep(0.01)
+    time.sleep(0.01)  # simulate delay
     end = time.time()
-    return f"{int((end - start) * 1000)}ms"
+    ping_ms = (end - start) * 1000
+    return f"{int(ping_ms)}ms"
 
-def get_uptime(start_timestamp):
-    seconds = int(time.time()) - int(start_timestamp)
+def get_time(old_timestamp):
+    seconds = int(time.time()) - int(old_timestamp)
 
     minute = 60
     hour = 60 * minute
@@ -43,30 +47,22 @@ def get_uptime(start_timestamp):
 
     return " ".join(result)
 
-# ───────────── /ping Handler ─────────────
+# /ping command
 async def ping_handle(client, event):
-    buttons = [[Button.url("𝐒𝐔𝐏𝐏𝐎𝐑𝐓", "https://t.me/YourSupportGroup")]]
+    # Step 1: send "Pinging..." with image
+    buttons = [[Button.url("• 𝗦𝗨𝗣𝗣𝗢𝗥𝗧 •", "https://t.me/YourSupportGroup")]]
+    msg = await event.respond("<b>ᴘɪɴɢɪɴɢ...</b>", file=IMG_URL, parse_mode="html", buttons=buttons)
 
-    # Step 1: Get the video from Telegram channel
-    try:
-        video_msg = await client.get_messages(CHANNEL, ids=MSG_ID)
-        media = video_msg.media
-    except Exception as e:
-        await event.respond(f"❌ Failed to get video: {e}")
-        return
+    # Step 2: calculate ping & uptime
+    ts = ping.get("time")
+    since = get_time(ts)
+    ms = get_ping()
 
-    # Step 2: Send "Pinging..." with video
-    msg = await event.respond("<b>ᴘɪɴɢɪɴɢ...</b>", file=media, parse_mode="html", buttons=buttons)
-
-    # Step 3: Calculate ping & uptime
-    start_ts = ping.get("time", time.time())
-    uptime = get_uptime(start_ts)
-    latency = get_ping()
-
-    # Step 4: Edit the same message with stats
-    final_text = (
+    final_msg = (
         "<blockquote>ᴘᴏɴɢ!!</blockquote>\n"
-        f"<b>ᴘɪɴɢ:</b> {latency}\n"
-        f"<b>ᴜᴘᴛɪᴍᴇ:</b> {uptime}\n"
+        f" <b>岽樕瓷�</b> {ms}\n"
+        f" <b>岽溼礃岽浬磵岽�</b> {since}\n"
     )
-    await msg.edit(final_text, parse_mode="html", buttons=buttons)
+
+    # Step 3: edit same message
+    await msg.edit(final_msg, parse_mode="html", buttons=buttons)
