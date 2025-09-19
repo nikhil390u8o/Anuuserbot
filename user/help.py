@@ -14,7 +14,7 @@ async def help_handle(client, event):
     # 📜 Full Help Menu (Quoted Commands)
     help_text = (
         "**🤖 𝗠𝗔𝗥𝗖𝗢 𝗨𝗦𝗘𝗥𝗕𝗢𝗧 𝗛𝗘𝗟𝗣 𝗠𝗘𝗡𝗨**\n\n"
-        "**Available Commands:**\n"
+        "𝗔𝗩𝗔𝗜𝗟𝗔𝗕𝗟𝗘 𝗖𝗢𝗠𝗠𝗔𝗡𝗗𝗦\n"
         "> `.afk`\n"
         "> `.ban`\n"
         "> `.ba`\n"
@@ -34,8 +34,8 @@ async def help_handle(client, event):
         "> `.type`\n"
         "> `.wtf`\n\n"
         "**Support**\n"
-        "📢 **Support Channel:** @YourSupportChannel\n"
-        "👑 **Owner:** @YourOwnerUsername"
+        "𝗦𝗨𝗣𝗣𝗢𝗥𝗧 𝗖𝗛𝗔𝗡𝗡𝗘𝗟: @YourSupportChannel\n"
+        "𝗢𝗪𝗡𝗘𝗥: @Mn4xd"
     )
 
     await x.edit(help_text)
