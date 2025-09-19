@@ -2,7 +2,7 @@ from telethon import Button, events
 from config import OWNER_NAME, OWNER_USERNAME
 from firebase import add_new_user
 
-IMG_URL = "https://files.catbox.moe/1f21lw.jpg"
+VIDEO_URL = "https://files.catbox.moe/1f21lw.jpg"
 
 # /start command
 async def start_handle(event):
@@ -34,7 +34,7 @@ async def start_handle(event):
     [Button.inline("•𝐇𝐄𝐋𝐏", data=b"help_menu")]
 ]
 
-    await event.reply(msg, file=IMG_URL, parse_mode="html", buttons=buttons)
+    await event.reply(msg, file=VIDEO_URL, parse_mode="html", buttons=buttons)
 
     # Save user in Firebase
     data = {
