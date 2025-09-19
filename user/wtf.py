@@ -8,7 +8,6 @@ links = [
 ]
 
 async def wtf_handle(client, event):
-    # Use triple quotes for ASCII art
     wtf = (
         "ғᴜᴍᴋᴇᴅ ʙʏ\n"
         ".                       /¯ )\n"
@@ -24,13 +23,14 @@ async def wtf_handle(client, event):
         "               ))))))))))))\n"
     )
 
-    # Animate letter by letter
+    # Split into chunks of 3-4 letters for faster editing
+    chunk_size = 3
     text = ""
-    for letter in wtf:
-        text += letter
+    for i in range(0, len(wtf), chunk_size):
+        text += wtf[i:i+chunk_size]
         safe_text = text + "\u2060"  # Invisible char to force update
         await event.edit(safe_text)
-        await asyncio.sleep(0.0)  # animation speed
+        await asyncio.sleep(0.00)  # super fast animation
 
     # After animation, send clickable image with final text
     random_link = random.choice(links)
