@@ -1,3 +1,5 @@
+import asyncio
+
 async def help_handle(client, event):
     # ✅ Delete the .help command message
     try:
@@ -6,8 +8,8 @@ async def help_handle(client, event):
         pass
 
     # 🍼 First short animation before showing help
-    x = await event.respond("**ᴄᴏᴍɪɴɢ ʙᴀʙʏ....")
-    await asyncio.sleep(0.2)
+    x = await event.respond("**ᴄᴏᴍɪɴɢ ʙᴀʙʏ....**")  # ✅ Fixed missing **
+    await asyncio.sleep(0.2)  # wait a bit longer before editing
 
     # 📜 Full Help Menu (Quoted Commands)
     help_text = (
@@ -37,3 +39,4 @@ async def help_handle(client, event):
     )
 
     await x.edit(help_text)
+
