@@ -6,6 +6,7 @@ from bot.ping import ping_handle
 from bot.send import send_handle
 from bot.log import log_msg
 from bot.addhelp import addhelp_handle
+from bot.welcome import welcome_user   # <-- ADD THIS
 
 
 def register(client):
@@ -25,7 +26,11 @@ def register(client):
     @client.on(events.NewMessage(pattern=r"^/start$"))
     async def start_cmd(event):
         await start_handle(event)
-
+    
+    @client.on(events.NewMessage(pattern=r"welcome(\s.*)?$"))
+    async def welcome_cmd(event):
+        await welcome_handle(event)
+     
     # /gen
     @client.on(events.NewMessage(pattern=r"^/gen(\s.*)?$"))
     async def gen_cmd(event):
@@ -55,3 +60,8 @@ def register(client):
     @client.on(events.CallbackQuery(data=b"back_start"))
     async def callback_back(event):
         await back_start(event)
+
+    # Auto Welcome Handler
+    @client.on(events.ChatAction())
+    async def welcome_event(event):
+        await welcome_user (event)
