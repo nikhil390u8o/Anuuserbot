@@ -105,9 +105,11 @@ async def run_main_bot():
 
 # ─────────── Entry Point ───────────
 async def main():
-    await start_web()                     # Start web server (auto-port switch)
-    asyncio.create_task(manage_userbots())# Start userbots manager
-    await run_main_bot()                  # Start main bot
+    await start_web()
+    asyncio.create_task(manage_userbots())
+    asyncio.create_task(start_vc())   # 🔊 VC system
+    await run_main_bot()
+                  # Start main bot
 
 def handle_exit(signum, frame):
     print("🛑 Shutting down...")
