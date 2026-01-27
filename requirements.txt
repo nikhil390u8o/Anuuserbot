@@ -1,3 +1,5 @@
+pytgcalls
+tgcrypto
 telethon
 flask
 aiohttp
