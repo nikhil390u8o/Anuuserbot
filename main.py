@@ -4,7 +4,7 @@ import signal
 import sys
 import subprocess
 from aiohttp import web
-from user import vc
+from user.vc_runner import start_vc
 from telethon import TelegramClient, events
 from telethon.sessions import StringSession
 import config
