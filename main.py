@@ -4,7 +4,6 @@ import signal
 import sys
 import subprocess
 from aiohttp import web
-from user.vc_runner import start_vc
 from telethon import TelegramClient, events
 from telethon.sessions import StringSession
 import config
@@ -107,7 +106,6 @@ async def run_main_bot():
 async def main():
     await start_web()
     asyncio.create_task(manage_userbots())
-    asyncio.create_task(start_vc())   # 🔊 VC system
     await run_main_bot()
                   # Start main bot
 
