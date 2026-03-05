@@ -1,80 +1,86 @@
-
 import asyncio
 import random
 from pyrogram import Client, filters
 from pyrogram.types import Message
 
 from config import SUDO_USER
-from PANDA.data import RAID           # Your existing RAID list with Hindi abuses
+from PANDA.data import RAID  # Your RAID messages list
 
-# In-memory storage for users with active reply-raid (resets on bot restart)
-RAIDS = []
+# Global list of user IDs currently under reply-raid (in-memory only)
+ACTIVE_RRAID = []
 
 @Client.on_message(filters.command("rraid", prefixes=".") & (filters.me | filters.user(SUDO_USER)))
-async def start_rraid(client: Client, message: Message):
+async def rraid_handle(client: Client, message: Message):
     """
-    .rraid → start auto-reply raid on replied user or mentioned user
+    .rraid  →  Start reply-raid on a user (they get auto-replied with random abuses)
+    Usage:
+      • Reply to user → .rraid
+      • Mention user  → .rraid @username
     """
     target = None
 
-    # Priority: replied message
+    # Case 1: Replied to a message
     if message.reply_to_message and message.reply_to_message.from_user:
         target = message.reply_to_message.from_user
 
-    # Fallback: .rraid @username or .rraid 123456789
+    # Case 2: Provided username or ID
     elif len(message.command) > 1:
         arg = message.command[1]
         try:
             target = await client.get_users(arg)
         except Exception:
-            return await message.reply_text("`Invalid user / not found`")
+            return await message.reply_text("`Couldn't find that user.`")
 
     if not target:
         return await message.reply_text(
             "**Usage:**\n"
-            "• `.rraid` (reply to user)\n"
+            "• `.rraid` (reply to someone)\n"
             "• `.rraid @username` or `.rraid 123456789`"
         )
 
-    if target.id in RAIDS:
+    # Basic protection
+    if target.is_self:
+        return await message.reply_text("`I won't raid myself.`")
+    if target.id in SUDO_USER:
+        return await message.reply_text("`Can't raid a sudo user.`")
+
+    if target.id in ACTIVE_RRAID:
         return await message.reply_text(
-            f"**Already raiding** [{target.first_name}](tg://user?id={target.id})"
+            f"**Already raiding** → [{target.first_name}](tg://user?id={target.id})"
         )
 
-    # Optional: protect yourself / devs / sudo users
-    if target.is_self or target.id in SUDO_USER:
-        return await message.reply_text("`Cannot raid myself or sudo users`")
+    ACTIVE_RRAID.append(target.id)
 
-    RAIDS.append(target.id)
     await message.reply_text(
-        f"**Reply-Raid started** → [{target.first_name}](tg://user?id={target.id})\n"
-        f"They will now receive random messages from the RAID list on every reply."
+        f"**Reply-Raid activated** on [{target.first_name}](tg://user?id={target.id})\n"
+        "Every message they send will now get a random reply from the raid list."
     )
 
 
-@Client.on_message(~filters.me & filters.incoming, group=5)  # group=5 to run after other handlers
-async def rraid_trigger(client: Client, message: Message):
+@Client.on_message(~filters.me & filters.incoming, group=10)
+async def rraid_auto_reply(client: Client, message: Message):
     """
-    Auto-reply when someone in RAIDS list messages anywhere
+    Automatically replies to messages from users in ACTIVE_RRAID list
+    group=10 → runs after most other handlers
     """
     if not message.from_user:
         return
 
-    if message.from_user.id in RAIDS:
+    if message.from_user.id in ACTIVE_RRAID:
         try:
-            text = random.choice(RAID)
-            # Random human-like delay
-            await asyncio.sleep(random.uniform(1.2, 4.0))
-            await message.reply(text)
+            abuse = random.choice(RAID)
+            # Random delay to look more natural / avoid flood detection
+            await asyncio.sleep(random.uniform(1.3, 4.2))
+            await message.reply(abuse)
         except Exception:
-            # Silent fail on floodwait, deleted messages, etc.
+            # Silent fail (floodwait, permissions, deleted msg, etc.)
             pass
 
 
 @Client.on_message(filters.command("drraid", prefixes=".") & (filters.me | filters.user(SUDO_USER)))
-async def stop_rraid(client: Client, message: Message):
+async def drraid_handle(client: Client, message: Message):
     """
-    .drraid → stop reply-raid on user
+    .drraid  →  Stop reply-raid on a user
     """
     target = None
 
@@ -86,34 +92,35 @@ async def stop_rraid(client: Client, message: Message):
         try:
             target = await client.get_users(arg)
         except Exception:
-            return await message.reply_text("`Invalid user / not found`")
+            return await message.reply_text("`Couldn't find that user.`")
 
     if not target:
         return await message.reply_text(
             "**Usage:**\n"
-            "• `.drraid` (reply to user)\n"
+            "• `.drraid` (reply to someone)\n"
             "• `.drraid @username`"
         )
 
-    if target.id not in RAIDS:
+    if target.id not in ACTIVE_RRAID:
         return await message.reply_text(
             f"**No active reply-raid** on [{target.first_name}](tg://user?id={target.id})"
         )
 
-    RAIDS.remove(target.id)
+    ACTIVE_RRAID.remove(target.id)
+
     await message.reply_text(
         f"**Reply-Raid stopped** on [{target.first_name}](tg://user?id={target.id})"
     )
 
 
-# Optional: add to help menu
+# Optional: Add to your help menu (if your bot uses this pattern)
 try:
     from user.help import add_command_help
     add_command_help(
         "rraid",
         [
-            [".rraid", "Start auto-reply raid (reply or @username)"],
-            [".drraid", "Stop auto-reply raid (reply or @username)"],
+            [".rraid", "Start reply raid on user (reply or @username)"],
+            [".drraid", "Stop reply raid on user (reply or @username)"],
         ],
     )
 except ImportError:
