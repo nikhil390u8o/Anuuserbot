@@ -10,6 +10,7 @@ from user.nah import nah_handle
 from user.brain import brain_handle
 from user.wtf import wtf_handle
 from user.ping import ping_handle
+from user.drraid import drraid_handle
 from user.raid import raid_handle
 from user.help import help_handle
 from user.info import info_handle
