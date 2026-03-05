@@ -41,7 +41,7 @@ async def rraid_handle(client: Client, message: Message):
     # Basic protection
     if target.is_self:
         return await message.reply_text("`I won't raid myself.`")
-    if target.id in SUDO_USER:
+    if target.id in SUDO_USERS:
         return await message.reply_text("`Can't raid a sudo user.`")
 
     if target.id in ACTIVE_RRAID:
@@ -75,53 +75,3 @@ async def rraid_auto_reply(client: Client, message: Message):
         except Exception:
             # Silent fail (floodwait, permissions, deleted msg, etc.)
             pass
-
-
-@Client.on_message(filters.command("drraid", prefixes=".") & (filters.me | filters.user(SUDO_USER)))
-async def drraid_handle(client: Client, message: Message):
-    """
-    .drraid  →  Stop reply-raid on a user
-    """
-    target = None
-
-    if message.reply_to_message and message.reply_to_message.from_user:
-        target = message.reply_to_message.from_user
-
-    elif len(message.command) > 1:
-        arg = message.command[1]
-        try:
-            target = await client.get_users(arg)
-        except Exception:
-            return await message.reply_text("`Couldn't find that user.`")
-
-    if not target:
-        return await message.reply_text(
-            "**Usage:**\n"
-            "• `.drraid` (reply to someone)\n"
-            "• `.drraid @username`"
-        )
-
-    if target.id not in ACTIVE_RRAID:
-        return await message.reply_text(
-            f"**No active reply-raid** on [{target.first_name}](tg://user?id={target.id})"
-        )
-
-    ACTIVE_RRAID.remove(target.id)
-
-    await message.reply_text(
-        f"**Reply-Raid stopped** on [{target.first_name}](tg://user?id={target.id})"
-    )
-
-
-# Optional: Add to your help menu (if your bot uses this pattern)
-try:
-    from user.help import add_command_help
-    add_command_help(
-        "rraid",
-        [
-            [".rraid", "Start reply raid on user (reply or @username)"],
-            [".drraid", "Stop reply raid on user (reply or @username)"],
-        ],
-    )
-except ImportError:
-    pass
