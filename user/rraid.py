@@ -3,7 +3,7 @@ import random
 from pyrogram import Client, filters
 from pyrogram.types import Message
 
-from config import SUDO_USER
+from config import SUDO_USERS
 from PANDA.data import RAID  # Your RAID messages list
 
 # Global list of user IDs currently under reply-raid (in-memory only)
