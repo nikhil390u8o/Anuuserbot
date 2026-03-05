@@ -1,70 +1,36 @@
-# user/rraid.py
-
 import asyncio
-import random
-from pyrogram import Client, filters
-from pyrogram.types import Message
+from PANDA.data import RAID
 
-from config import SUDO_USERS   # agar config mein SUDO_USERS hai toh yeh use karo
-# ya agar SUDO_USER (singular) hai toh change kar dena: from config import SUDO_USER
+async def raid_handle(client, event):
+  """
+  Usage (reply to a user's message with):
+    .raid 10        -> send 10 abusive messages as a reply
+    .raid           -> default 5 messages
+  Only works when used as a reply to a user's message.
+  """
+  text = event.raw_text
+  parts = text.split(maxsplit=1)
+  times = 5
+  if len(parts) > 1 and parts[1].strip():
+    try:
+      times = int(parts[1].strip())
+    except:
+      await event.edit("`The argument must be an integer. Example: .raid 10`")
+      return
 
-from PANDA.data import RAID     # tumhara RAID list
+  # Ensure the command is a reply
+  if not event.is_reply:
+    await event.edit("`Reply to a user's message to raid them.`")
+    return
 
-# Global list (in-memory) – bot restart hone par clear ho jayega
-ACTIVE_RRAID = []
+  # Get the replied message so responses are threaded to that user
+  replied = await event.get_reply_message()
 
-@Client.on_message(filters.command("rraid", prefixes=".") & (filters.me | filters.user(SUDO_USERS)))
-async def rraid_handle(client: Client, message: Message):
-    """
-    .rraid → kisi user par reply-raid start karo
-    """
-    target = None
+  await event.delete()
 
-    if message.reply_to_message and message.reply_to_message.from_user:
-        target = message.reply_to_message.from_user
-
-    elif len(message.command) > 1:
-        arg = message.command[1]
-        try:
-            target = await client.get_users(arg)
-        except Exception:
-            return await message.reply_text("`User nahi mila.`")
-
-    if not target:
-        return await message.reply_text(
-            "**Use karne ka tarika:**\n"
-            "• `.rraid` (kisi message ka reply karke)\n"
-            "• `.rraid @username` ya `.rraid 123456789`"
-        )
-
-    if target.is_self:
-        return await message.reply_text("`Apne par raid nahi kar sakta.`")
-    if target.id in SUDO_USERS:
-        return await message.reply_text("`Sudo user par raid nahi kar sakta.`")
-
-    if target.id in ACTIVE_RRAID:
-        return await message.reply_text(f"**Already raiding** → {target.mention}")
-
-    ACTIVE_RRAID.append(target.id)
-
-    await message.reply_text(
-        f"**Reply-Raid shuru** → {target.mention}\n"
-        "Ab iske har message ka jawab raid list se milega."
-    )
-
-
-@Client.on_message(~filters.me & filters.incoming, group=10)
-async def rraid_auto_reply(client: Client, message: Message):
-    """
-    Jo user ACTIVE_RRAID mein hai, uske har message par auto-reply
-    """
-    if not message.from_user:
-        return
-
-    if message.from_user.id in ACTIVE_RRAID:
-        try:
-            abuse = random.choice(RAID)
-            await asyncio.sleep(random.uniform(1.3, 4.2))  # natural delay
-            await message.reply(abuse)
-        except Exception:
-            pass  # flood ya error aaye to ignore
+  for i in range(times):
+    # choose message in a round-robin way to avoid heavy randomness
+    msg = RAID[i % len(RAID)]
+    # respond to the replied message (keeps the target visible)
+    await event.respond(msg, reply_to=replied.id)
+    await asyncio.sleep(0.0)
