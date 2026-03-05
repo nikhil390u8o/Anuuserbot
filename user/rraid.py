@@ -9,7 +9,7 @@ from PANDA.data import RAID  # Your RAID messages list
 # Global list of user IDs currently under reply-raid (in-memory only)
 ACTIVE_RRAID = []
 
-@Client.on_message(filters.command("rraid", prefixes=".") & (filters.me | filters.user(SUDO_USER)))
+@Client.on_message(filters.command("rraid", prefixes=".") & (filters.me | filters.user(SUDO_USERS)))
 async def rraid_handle(client: Client, message: Message):
     """
     .rraid  →  Start reply-raid on a user (they get auto-replied with random abuses)
