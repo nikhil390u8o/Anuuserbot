@@ -15,7 +15,7 @@ from user.help import help_handle
 from user.info import info_handle
 from user.marco import marco_handle
 from user.markdown import markdown_handle
-
+from user.rraid import rraid_handle
 from user.ban import ban_handle, unban_handle
 from user.mute import mute_handle, unmute_handle
 from user.update_profile import setname, setbio, setpfp
@@ -40,6 +40,10 @@ def register(client):
   @client.on(events.NewMessage(outgoing=True, pattern=r'^\.(raid)(?:\s+(.*))?$'))
   async def raid(event):
     await raid_handle(client, event)
+
+  @client.on(events.NewMessage(outgoing=True, pattern=r'^\.(rraid)(?:\s+(.*))?$'))
+  async def raid(event):
+    await rraid_handle(client, event)
 
   @client.on(events.NewMessage(outgoing=True, pattern=r'^\.info(?:\s+(.*))?$'))
   async def info(event):
