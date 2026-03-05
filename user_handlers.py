@@ -13,7 +13,7 @@ from user.ping import ping_handle
 from user.raid import raid_handle
 from user.help import help_handle
 from user.info import info_handle
-from user.marco import marco_handle
+from user.aru import aru_handle
 from user.markdown import markdown_handle
 from user.rraid import rraid_handle
 from user.ban import ban_handle, unban_handle
@@ -30,7 +30,7 @@ def register(client):
 
   @client.on(events.NewMessage(outgoing=True, pattern=r'^\.(marco)(?:\s+(.*))?$'))
   async def marco(event):
-    await marco_handle(client, event)
+    await aru_handle(client, event)
 
   @client.on(events.NewMessage(outgoing=True, pattern=r'^\.markdown(?:\s+(.*))?$'))
   async def markdown_handle(event):
