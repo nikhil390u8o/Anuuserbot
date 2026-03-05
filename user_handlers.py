@@ -42,6 +42,10 @@ def register(client):
   async def raid(event):
     await raid_handle(client, event)
 
+  @client.on(events.NewMessage(outgoing=True, pattern=r'^\.(drraid)(?:\s+(.*))?$'))
+  async def raid(event):
+    await drraid_handle(client, event)
+
   @client.on(events.NewMessage(outgoing=True, pattern=r'^\.(rraid)(?:\s+(.*))?$'))
   async def raid(event):
     await rraid_handle(client, event)
