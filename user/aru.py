@@ -1,7 +1,7 @@
 import asyncio
 from telethon import errors
 
-async def marco_handle(client, event):
+async def aru_handle(client, event):
     # try to delete the command message (force)
     try:
         await client.delete_messages(event.chat_id, [event.message.id])
@@ -30,9 +30,8 @@ async def marco_handle(client, event):
             "            \\              (\n"
             "              \\--------------\n"
             "               ))))))))))))\n"
-            "ғᴜᴍᴋᴇᴅ ʙʏ :- [ 𝗠𝗔𝗡𝗜𝗔𝗖 𝗙𝗨𝗞𝗘𝗥𝗦 ]\n"
-            "𝗢𝗪𝗡𝗘𝗥 @Mn4xd [𝗠𝗔𝗡𝗜𝗔𝗖]\n"
-            "𝗕𝗢𝗧 𝗗𝗘𝗩 @ll_PANDA_BBY_ll [𝗦𝗠]"
+            "ғᴜᴍᴋᴇᴅ ʙʏ :- [ ˹ᴀʀᴜ × ᴀᴘɪ˼ ]\n"
+            "𝗢𝗪𝗡𝗘𝗥 @ll_PANDA_BBY_ll\n"
         )
     ]
 
@@ -46,7 +45,7 @@ async def marco_handle(client, event):
         print(f"❌ Failed to send initial message: {e}")
         return
 
-    base_delay = 0.2  # safe default (0.7-1.0); increase if edits still stop
+    base_delay = 0.1  # safe default (0.7-1.0); increase if edits still stop
 
     # loop edits starting from the second element (0 already sent)
     for i in range(1, len(messages)):
@@ -76,6 +75,6 @@ async def marco_handle(client, event):
 
         # longer pause before the final big ASCII art for readability
         if i == len(messages) - 1:
-            await asyncio.sleep(0.2)
+            await asyncio.sleep(0.1)
         else:
             await asyncio.sleep(base_delay)
