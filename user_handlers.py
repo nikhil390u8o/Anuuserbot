@@ -4,7 +4,6 @@ from user.love import loveyou_handle, love_handle
 from user.type import type_handle
 from user.markdown import markdown_handle
 from user.afk import afk_handle, afkmsg_handle, stop_afk
-from user.afk import afk_handle, afkmsg_handle, stop_afk
 from user.lover import lover_handle
 from user.dino import dino_anim
 from user.nah import nah_handle
