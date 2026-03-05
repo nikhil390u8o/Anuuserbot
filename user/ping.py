@@ -6,35 +6,42 @@ BOT_START_TIME = time.time()
 
 async def ping_handle(client, event):
     """
-    .ping command with smooth 10%-100% loading animation
-    and a fancy final output.
+    .ping command with ALPHA-style animation and final output
     """
     start = time.monotonic()
     await event.delete()
 
-    # Send initial message
-    loading = await event.respond("ᴘɪɴɢɪɴɢ...")
+    # Initial loading message
+    loading = await event.respond("0% ▒▒▒▒▒▒▒▒▒▒")
 
-    # Show progress from 20 to 100
-    for percent in range(20, 101, 10):
-        await asyncio.sleep(0.10)
-        await loading.edit(f"ᴘɪɴɢɪɴɢ... {percent}%**")
+    # An𝗔𝗟𝗣ages (similar to your ALPHA example)
+    stages = [
+        ("20% ███ ᴀʀᴜ ᴏᴘ▒▒▒▒▒", 0.08),
+        ("40% ████ ᴀʀᴜ ɪs▒▒▒▒", 0.08),
+        ("60% ██████ ᴀʀᴜ ᴄᴏᴍᴇ▒▒", 0.09),
+        ("80% ████████ ᴀʀᴜ▒▒▒▒", 0.09),
+        ("100%██████████ ᴄᴏᴍɪɴɢ", 0.10),
+    ]
 
-    # Calculate latency & uptime
+    for text, delay in stages:
+        await asyncio.sleep(delay)
+        await loading.edit(text)
+
+    # Calculate real ping time and uptime
     end = time.monotonic()
-    ping_ms = round((end - start) * 1000, 2)
+    ping_ms = round((end - start) * 1000, 1)  # 1 decimal is usually enough
     uptime_sec = int(time.time() - BOT_START_TIME)
-    uptime = str(datetime.timedelta(seconds=uptime_sec))
+    uptime = str(datetime.timedelta(seconds=uptime_sec)).split('.')[0]  # remove microseconds
 
     me = await client.get_me()
-    fullname = f"{me.first_name or ''} {me.last_name or ''}".strip()
+    fullname = f"{me.first_name or ''} {me.last_name or ''}".strip() or me.username or "User"
 
-    # Final styled message
+    # Final output in similar style
     output = (
-         "❏   ❖ [ʀᴀᴅʜɪᴋᴀ-x-ɴᴇᴛᴡᴏʀᴋ](https://t.me/RADHIKA_YIIOO) ™ ╮\n"
-        f"├•  ❖ 𝐒ᴘᴇᴇᴅ - `{ping_ms} ms`\n"
-        f"├•  ❖ 𝐔ᴘᴛɪᴍᴇ - `{uptime}`\n"
-        f"└•  ❖ 𝐍ᴀᴍᴇ: ⏤‌‌‌‌‌‌‌‌ `{fullname}`"
+        "❏ ╰☞ 😈ᴀʀᴜ😈\n"
+        f"├• ╰☞ 𝐒ᴘᴇᴇᴅ {ping_ms} ms\n"
+        f"├• ╰☞ 𝐔ᴘᴛɪᴍᴇ {uptime}\n"
+        f"└• ╰☞ 𝐍ᴀᴍᴇ: {fullname}"
     )
 
     await loading.edit(output)
