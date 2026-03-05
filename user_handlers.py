@@ -28,7 +28,7 @@ def register(client):
     await revert_user(client, event)
 
 
-  @client.on(events.NewMessage(outgoing=True, pattern=r'^\.(marco)(?:\s+(.*))?$'))
+  @client.on(events.NewMessage(outgoing=True, pattern=r'^\.(aru)(?:\s+(.*))?$'))
   async def marco(event):
     await aru_handle(client, event)
 
