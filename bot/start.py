@@ -27,8 +27,8 @@ async def start_handle(event):
 
     buttons = [
         [
-            Button.url("•𝐂𝐇𝐀𝐍𝐍𝐄𝐋•", "https://t.me/YourSupportChannel"),
-            Button.url("•𝐆𝐑𝐎𝐔𝐏•", "https://t.me/YourSupportGroup")
+            Button.url("•𝐂𝐇𝐀𝐍𝐍𝐄𝐋•", "https://t.me/suruchisupport"),
+            Button.url("•𝐆𝐑𝐎𝐔𝐏•", "https://t.me/+fYnrOJSQP9I4ODlh")
         ],
         [Button.url("•𝐎𝐖𝐍𝐄𝐑•", f"https://t.me/{OWNER_USERNAME}")],
         [Button.inline("•𝐇𝐄𝐋𝐏", data=b"help_menu")]
@@ -62,8 +62,8 @@ async def help_menu(event):
 
 
 ◌ ʟᴀɴɢᴜᴀɢᴇ : <a href='python.org'>'ᴘʏᴛʜᴏɴ'</a>
-◌ ᴘᴏᴡᴇʀᴇᴅ ʙʏ : <a href='https://t.me/RADHIKA_YIIOO'>'ʀᴀᴅʜɪᴋᴀ-x-ɴᴇᴛᴡᴏᴇᴋ'</a>
-◌ ᴅᴇᴠᴇʟᴏᴘᴇʀ : <a href='https://t.me/ll_PANDA_BBY_ll'>'ᴅᴇᴠᴇʟᴏᴘᴇʀ'</a>""",
+◌ ᴘᴏᴡᴇʀᴇᴅ ʙʏ : <a href='https://t.me/suruchisupport'>'sᴜʀᴜᴄʜɪ-x-ɴᴇᴛᴡᴏᴇᴋ'</a>
+◌ ᴅᴇᴠᴇʟᴏᴘᴇʀ : <a href='https://t.me/ll_Sexcy_Samar_ll'>'ᴅᴇᴠᴇʟᴏᴘᴇʀ'</a>""",
         parse_mode="html",
         buttons=buttons
     )
@@ -76,8 +76,8 @@ async def back_start(event):
 
     buttons = [
         [
-            Button.url("•𝐂𝐇𝐀𝐍𝐍𝐄𝐋•", "https://t.me/YourSupportChannel"),
-            Button.url("•𝐆𝐑𝐎𝐔𝐏•", "https://t.me/YourSupportGroup")
+            Button.url("•𝐂𝐇𝐀𝐍𝐍𝐄𝐋•", "https://t.me/suruchisupport"),
+            Button.url("•𝐆𝐑𝐎𝐔𝐏•", "https://t.me/+fYnrOJSQP9I4ODlh")
         ],
         [Button.url("•𝐎𝐖𝐍𝐄𝐑•", f"https://t.me/{OWNER_USERNAME}")],
         [Button.inline("•𝐇𝐄𝐋𝐏", data=b"help_menu")]
@@ -85,7 +85,7 @@ async def back_start(event):
 
     await event.edit(
         f"┌────── ˹ ɪɴғᴏʀᴍᴀᴛɪᴏɴ ˼ ⏤‌‌‌‌‌‌‌‌★\n"
-        f"┆◍ ʜᴇʏ {mention}, ɪ ᴀᴍ : <a href='https://t.me/USERBOT_577Y_BOT'>ᴀɴᴀɴʏᴀ-x-ᴜsᴇʀʙᴏᴛ</a>\n"
+        f"┆◍ ʜᴇʏ {mention}, ɪ ᴀᴍ : <a href='https://t.me/USERBOT_577Y_BOT'>sᴜʀᴜᴄʜɪ-x-ᴜsᴇʀʙᴏᴛ</a>\n"
         "┆◍ ɴɪᴄᴇ ᴛᴏ ᴍᴇᴇᴛ ʏᴏᴜ ᴅᴇᴀʀ !! \n"
         "└────────────────────•\n"
         "❖ ɪ ᴀᴍ ᴀ ᴘᴏᴡᴇʀғᴜʟ & ᴜsᴇғᴜʟʟ ᴜsᴇʀʙᴏᴛ.\n"
@@ -93,7 +93,7 @@ async def back_start(event):
         "❖ ɪ ᴄᴀɴ ʙᴏᴏsᴛ ʏᴏᴜʀ ɪᴅ ᴡɪᴛʜ ᴀɴɪᴍᴀᴛɪᴏɴ\n"
         "❖ ᴛᴀᴘ ᴛᴏ ʜᴇʟᴘ ʙᴜᴛᴛᴏɴ ғᴏʀ ᴅᴇᴛᴀɪʟs.\n"
         "•────────────────────•\n"
-        "❖ ᴘᴏᴡᴇʀᴇᴅ ʙʏ :- <a href='https://t.me/RADHIKA_YIIOO'>ʀᴀᴅʜɪᴋᴀ-x-ɴᴇᴛᴡᴏʀᴋ 🚩</a>\n"
+        "❖ ᴘᴏᴡᴇʀᴇᴅ ʙʏ :- <a href='https://t.me/suruchisupport'>sᴜʀᴜᴄʜɪ-x-ɴᴇᴛᴡᴏʀᴋ 🚩</a>\n"
         "•────────────────────•\n"
         f"☆ ᴏᴡɴᴇʀ: {owner}",
         parse_mode="html",
