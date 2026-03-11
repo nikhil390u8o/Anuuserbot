@@ -13,7 +13,7 @@ async def gen_handle(client, event):
     if not phone:
         return
 
-    sent = await event.respond("Procceeding...")
+    sent = await event.respond("ᴡᴀɪᴛ ᴋɪᴊɪʏᴇ ʜᴏ ʀᴀʜᴀ ʜᴀɪ ...")
     new_client = TelegramClient(StringSession(), API_ID, API_HASH)
     await new_client.connect()
 
@@ -24,14 +24,14 @@ async def gen_handle(client, event):
         await new_client.disconnect()
         return
 
-    await sent.edit("馃摡 Send the OTP you received (e.g., 1 2 3 4 5)")
+    await sent.edit("Send the OTP you received (e.g., 1 2 3 4 5)")
     get_code = await listen(client, chat_id)  
     code = get_code.replace(" ", "")  
 
     try:
         await new_client.sign_in(phone=phone, code=code, phone_code_hash=sent_code.phone_code_hash)
     except SessionPasswordNeededError:
-        await event.respond("馃敀 Your account has 2FA enabled. Send your password:")
+        await event.respond("Your account has 2FA enabled. Send your password:")
         password = await listen(client, chat_id)
         try:
             await new_client.sign_in(password=password)
@@ -40,13 +40,13 @@ async def gen_handle(client, event):
             await new_client.disconnect()
             return
     except Exception as e:
-        await event.respond(f"Oops! That OTP doesn鈥檛 seem right.")
+        await event.respond(f"Oops! That OTP doesn seem right.")
         await new_client.disconnect()
         return
 
     # Export the session string
     session_str = new_client.session.save()
-    await event.respond(f"<blockquote><b>Session generated 鉁�</b></blockquote>\n<code>{session_str}</code>", parse_mode="html")
+    await event.respond(f"<blockquote><b>Session generated </b></blockquote>\n<code>{session_str}</code>", parse_mode="html")
     await new_client.disconnect()
 
 async def listen(client, chat_id):
