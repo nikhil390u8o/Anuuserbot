@@ -111,7 +111,7 @@ progress = [
 ]
 
 console = [
-    "[INFO]: Started deployment...锔�",
+    "[INFO]: Started deployment...",
     "[INFO]: Checking dependencies...",
     "[INFO]: Connecting to server... ",
     "[INFO]: Uploading files...",
@@ -119,7 +119,7 @@ console = [
     "[INFO]: Starting services...",
     "[INFO]: Running tests...",
     "[INFO]: Finalizing setup...",
-    "[INFO]: Reading session files... 锔�",
+    "[INFO]: Reading session files... ",
     "[INFO]: Securing connections... ",
-    "[SUCCESS]: Completed 鉁�"
+    "[SUCCESS]: Completed "
 ]
