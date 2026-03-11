@@ -21,7 +21,7 @@ async def clone_handle(client, event):
     return
   
   if value in active_users:
-    await event.reply("ᴛʜɪs ᴜsᴇʀ ɴᴏᴛ ɪᴅ ᴀʟʀᴇᴀᴅʏ ʀᴜɴɴɪɴɢ..")
+    await event.reply("ᴛʜɪs sᴇssɪᴏɴ ᴀʟʀᴇᴀᴅʏ ᴜsᴇ ᴘʟᴇᴀsᴇ ɢᴇɴ ɴᴇᴡ sᴇssɪᴏɴ...")
     return
     
   sent = await event.reply("ʙᴏᴏᴛɪɴɢ ʏᴏᴜʀ ᴄʟɪᴇɴᴛ...")
