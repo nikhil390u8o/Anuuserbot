@@ -3,9 +3,9 @@ import asyncio
 from telethon import events, Button
 
 WELCOME_IMAGES = [
-    "https://files.catbox.moe/d8mnv9.jpg",
-    "https://files.catbox.moe/4d7s4u.jpg",
-    "https://files.catbox.moe/orqaah.jpg"
+    "https://files.catbox.moe/xf5hxn.jpg",
+    "https://files.catbox.moe/0wsyy1.jpg",
+    "https://files.catbox.moe/626sjd.jpg"
 ]
 
 WELCOME_TEXT = """🌸✨ ──────────────────── ✨🌸  
@@ -19,14 +19,14 @@ WELCOME_TEXT = """🌸✨ ──────────────────
 ✨ <b>ғᴇᴇʟ ғʀᴇᴇ ᴛᴏ sʜᴀʀᴇ ᴀɴᴅ ᴇɴᴊᴏʏ!</b>  
 ⚡ <b>ᴇɴᴊᴏʏ ʏᴏᴜʀ ᴇxᴘᴇʀɪᴇɴᴄᴇ ᴡɪᴛʜ ᴛʜɪs ʙᴏᴛ</b>  
   
-💝 <b>ᴘᴏᴡᴇʀᴇᴅ ʙʏ ➤</b> <a href="https://t.me/XTREAME_BOTS">[𝗔𝗟𝗧𝗥𝗢𝗡 ✘ 𝗕𝗢𝗧𝗦]</a>  
+💝 <b>ᴘᴏᴡᴇʀᴇᴅ ʙʏ ➤</b> <a href="https://t.me/Suruchi_XUserbot">[𝗦𝗨𝗥𝗨𝗖𝗛𝗜 ✘ 𝗨𝗦𝗘𝗥𝗕𝗢𝗧]</a>  
 🌸✨ ──────────────────── ✨🌸  
 """
 
 WELCOME_BUTTONS = [
     [
-        Button.url("• ᴄʜᴀɴɴᴇʟ •", "https://t.me/ALTR0N_BOTS"),
-        Button.url("• sᴜᴘᴘᴏʀᴛ •", "https://t.me/PURANI_HVELI")
+        Button.url("• ᴄʜᴀɴɴᴇʟ •", "https://t.me/suruchisupport"),
+        Button.url("• sᴜᴘᴘᴏʀᴛ •", "https://t.me/+fYnrOJSQP9I4ODlh")
     ]
 ]
 
