@@ -46,10 +46,10 @@ async def send_handle(client, event):
         key = users.index(f"{user}") 
         sent_key += 1
         await sent.edit(
-    f"馃摙 **Message Delivery Report**\n\n"
-    f"鉁� Sent messages to users: {sent_key}\n"
-    f"鉂� Failed to send messages: {not_sent}\n"
-    f"馃懃 Total users: {total_user}"
+    f" **Message Delivery Report**\n\n"
+    f" Sent messages to users: {sent_key}\n"
+    f" Failed to send messages: {not_sent}\n"
+    f" Total users: {total_user}"
 )
       except Exception as e:
         not_sent +=1
@@ -73,10 +73,10 @@ async def send_handle(client, event):
         key = users.index(f"{user}") 
         sent_key += 1
         await sent.edit(
-    f"馃摙 **Message Delivery Report**\n\n"
-    f"鉁� Sent messages to users: {sent_key}\n"
-    f"鉂� Failed to send messages: {not_sent}\n"
-    f"馃懃 Total users: {total_user}"
+    f" **Message Delivery Report**\n\n"
+    f" Sent messages to users: {sent_key}\n"
+    f" Failed to send messages: {not_sent}\n"
+    f" Total users: {total_user}"
 )
       except Exception as e:
         not_sent +=1
