@@ -13,7 +13,7 @@ async def help_handle(client, event):
 
     # 📜 Full Help Menu (Quoted Commands)
     help_text = (
-        "**🤖 𝗠𝗔𝗥𝗖𝗢 𝗨𝗦𝗘𝗥𝗕𝗢𝗧 𝗛𝗘𝗟𝗣 𝗠𝗘𝗡𝗨**\n\n"
+        "**🤖 𝐒𝐔𝐑𝐔𝐂𝐇𝐈 𝗨𝗦𝗘𝗥𝗕𝗢𝗧 𝗛𝗘𝗟𝗣 𝗠𝗘𝗡𝗨**\n\n"
         "𝗔𝗩𝗔𝗜𝗟𝗔𝗕𝗟𝗘 𝗖𝗢𝗠𝗠𝗔𝗡𝗗𝗦\n"
         "> `.afk`\n"
         "> `.ban`\n"
