@@ -4,7 +4,7 @@ from pyrogram import Client, filters
 from pyrogram.types import Message
 
 from config import SUDO_USERS
-from panda.data import RAID  # Your RAID messages list
+from user.data import RAID  # Your RAID messages list
 
 # Global list of user IDs currently under reply-raid (in-memory only)
 ACTIVE_RRAID = []
