@@ -16,5 +16,5 @@ bot = {
 
 SUDO_USERS = [7311297618, 7450385463]
 OWNER_ID = 7724452546
-OWNER_USERNAME = "@ll_Sexcy_Samar_ll"
+OWNER_USERNAME = "ll_Sexcy_Samar_ll"
 OWNER_NAME = "sᴀᴍᴀʀ ᴘᴀᴘᴀ"
